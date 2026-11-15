@@ -234,6 +234,84 @@ def captions(d, t, wt):
         d.text((x, y), wd, font=f, fill=(255, 220, 60) if active else (255, 255, 255), anchor="lm", stroke_width=9, stroke_fill=(0, 0, 0))
         x += ww
 
+CAP_STYLE = ["a"]
+FSB = "/usr/share/fonts/opentype/inter/InterDisplay-SemiBold.otf"
+NUMWORDS = set("one two three four five six seven eight nine ten eleven twelve fifteen seventeen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million billion trillion half percent".split())
+
+def chunks_v2(scenes):
+    """sentence chunks (<=7 words) with per-word timing: list of (t0, t1, [(w, a, b)])"""
+    out = []
+    for sc in scenes:
+        words = sc["say"].split(); L = [len(w) + 2 for w in words]; tot = sum(L); t = sc["_t0"]; cur = []
+        for w, l in zip(words, L):
+            dd = (sc["_t1"] - sc["_t0"]) * l / tot; cur.append((w, t, t + dd)); t += dd
+            if len(cur) >= 7 or (w[-1] in ".?!" and len(cur) >= 3):
+                out.append(cur); cur = []
+        if cur: out.append(cur)
+    return [(c[0][1], c[-1][2] + 0.15, c) for c in out]
+
+def wrap(d, words, f, maxw):
+    lines = [[]]
+    for w in words:
+        test = " ".join([x[0] for x in lines[-1]] + [w[0]])
+        if lines[-1] and d.textlength(test, font=f) > maxw: lines.append([])
+        lines[-1].append(w)
+    return lines
+
+def captions_v2(d, im, t, ch):
+    st = CAP_STYLE[0]
+    c = next((c for c in ch if c[0] <= t < c[1]), None)
+    if c is None: return
+    words = c[2]
+    if st == "d1":
+        f = font(FSB, 58); lines = wrap(d, words, f, 820); y0 = H * 0.79 - (len(lines) - 1) * 36
+        ov = Image.new("RGBA", im.size, (0, 0, 0, 0)); od = ImageDraw.Draw(ov)
+        od.rounded_rectangle([90, y0 - 60, W - 90, y0 + (len(lines) - 1) * 72 + 60], radius=30, fill=(0, 0, 0, 150))
+        im.paste(Image.alpha_composite(im.convert("RGBA"), ov).convert("RGB"))
+        d2 = ImageDraw.Draw(im)
+        for i, ln in enumerate(lines):
+            d2.text((W / 2, y0 + i * 72), " ".join(x[0] for x in ln), font=f, fill=(255, 255, 255), anchor="mm")
+    elif st == "d2":
+        f = font(FSB, 62); lines = wrap(d, words, f, 900); y0 = H * 0.79 - (len(lines) - 1) * 38
+        for i, ln in enumerate(lines):
+            tw = d.textlength(" ".join(x[0] for x in ln), font=f); x = W / 2 - tw / 2
+            for (w, a, b) in ln:
+                col = (255, 255, 255) if a <= t else (150, 150, 170)
+                d.text((x, y0 + i * 76), w, font=f, fill=col, anchor="lm", stroke_width=3, stroke_fill=(10, 5, 20))
+                x += d.textlength(w + " ", font=f)
+    elif st == "d3":
+        f = font(FSB, 56); lines = wrap(d, words, f, 840); y0 = H * 0.77
+        hgt = len(lines) * 70
+        d.rectangle([92, y0 - 38, 100, y0 - 38 + hgt], fill=(0, 230, 255))
+        for i, ln in enumerate(lines):
+            x = 128
+            for (w, a, b) in ln:
+                if a > t: break
+                d.text((x, y0 + i * 70), w, font=f, fill=(255, 255, 255), anchor="lm", stroke_width=2, stroke_fill=(10, 5, 20))
+                x += d.textlength(w + " ", font=f)
+    elif st == "d4y":
+        f = font(FBo, 64); lines = wrap(d, words, f, 900); y0 = H * 0.79 - (len(lines) - 1) * 40
+        for i, ln in enumerate(lines):
+            tw = d.textlength(" ".join(x[0] for x in ln), font=f); x = W / 2 - tw / 2
+            for (w, a, b) in ln:
+                k = float(np.clip((t - a) / 0.18, 0, 1))
+                ww = w.strip(".,?!").lower(); key = ww in NUMWORDS or ww.rstrip("s") in NUMWORDS or ww in ("tens", "dozens") or any(ch.isdigit() for ch in w)
+                base = (255, 214, 60) if key else (255, 255, 255)
+                col = tuple(int(v * k + 20 * (1 - k)) for v in base)
+                if k > 0: d.text((x, y0 + i * 80 + (1 - k) * 14), w, font=f, fill=col, anchor="lm", stroke_width=3, stroke_fill=(10, 5, 20))
+                x += d.textlength(w + " ", font=f)
+    elif st == "d4":
+        f = font(FSB, 62); lines = wrap(d, words, f, 900); y0 = H * 0.79 - (len(lines) - 1) * 38
+        for i, ln in enumerate(lines):
+            tw = d.textlength(" ".join(x[0] for x in ln), font=f); x = W / 2 - tw / 2
+            for (w, a, b) in ln:
+                k = float(np.clip((t - a) / 0.18, 0, 1))
+                key = w.strip(".,?!").lower() in NUMWORDS
+                base = (0, 230, 255) if key else (255, 255, 255)
+                col = tuple(int(v * k + 20 * (1 - k)) for v in base)
+                if k > 0: d.text((x, y0 + i * 76 + (1 - k) * 14), w, font=f, fill=col, anchor="lm", stroke_width=3, stroke_fill=(10, 5, 20))
+                x += d.textlength(w + " ", font=f)
+
 def word_timing(scenes):
     out = []; gid = 0
     for sc in scenes:
@@ -254,7 +332,8 @@ def main(ep_path, outdir):
     scenes = ep["scenes"]
     for sc, (a, b) in zip(scenes, timings):
         sc["_t0"], sc["_t1"] = a, b; sc["_dur"] = b - a + R.GAP
-    wt = word_timing(scenes)
+    wt = word_timing(scenes); ch = chunks_v2(scenes)
+    CAP_STYLE[0] = ep.get("captions", "a")
     pos = DUST.copy().astype(np.float32); vel = np.zeros_like(pos)
     total = int((dur + 0.6) * FPS)
     tmp = os.path.join(outdir, "silent.mp4")
@@ -277,7 +356,8 @@ def main(ep_path, outdir):
         img = bg0 + bokeh_layer(t, (90, 40, 160)) * 0.7 + layer + glow(layer, 18, gain=2.0)
         im = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)); d = ImageDraw.Draw(im)
         if ov: ov(d)
-        captions(d, t, wt)
+        if CAP_STYLE[0] == "a": captions(d, t, wt)
+        else: captions_v2(d, im, t, ch); d = ImageDraw.Draw(im)
         d.text((W / 2, H - 110), "INNER NUMBERS", font=font(FBo, 32), fill=(170, 175, 200), anchor="mm")
         ff.stdin.write(im.tobytes())
         if fi % 150 == 0: print("frame", fi, total, flush=True)

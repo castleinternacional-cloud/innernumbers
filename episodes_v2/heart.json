@@ -4,14 +4,162 @@
  "voice": "am_michael",
  "speed": 1.05,
  "scenes": [
-  {"say": "You think your heart rests when you sleep. It doesn't.", "visual": {"type": "heart3d"}},
-  {"say": "Tonight, while you sleep, it will still beat tens of thousands of times.", "visual": {"type": "counter", "value": 28800, "label": "BEATS WHILE YOU SLEEP", "note": "8 hours × 60 beats per minute"}},
-  {"say": "By tomorrow, that's over one hundred thousand beats.", "visual": {"type": "linegraph", "title": "YOUR HEARTBEATS IN ONE DAY", "points": [[0,0],[8,28800],[24,103680]], "xmax": 24, "ymax": 120000, "xlabels": ["12am","6am","12pm","6pm","12am"], "ylabels": ["0","30k","60k","90k","120k"], "bands": [[0,8,"SLEEP"]]}},
-  {"say": "But hearts aren't all the same. A mouse's heart beats about six hundred times a minute.", "visual": {"type": "bars", "show": 1, "title": "BEATS PER MINUTE", "items": [["MOUSE",600,"at rest"],["YOU",70,"at rest"],["BLUE WHALE",2,"deep dive"]]}},
-  {"say": "Yours, about seventy.", "visual": {"type": "bars", "show": 2, "title": "BEATS PER MINUTE", "items": [["MOUSE",600,"at rest"],["YOU",70,"at rest"],["BLUE WHALE",2,"deep dive"]]}},
-  {"say": "And a blue whale's can drop to just two.", "visual": {"type": "bars", "show": 3, "title": "BEATS PER MINUTE", "items": [["MOUSE",600,"at rest"],["YOU",70,"at rest"],["BLUE WHALE",2,"deep dive"]]}},
-  {"say": "Inside yours, every beat pushes out about seventy milliliters of blood.", "visual": {"type": "cutaway", "value": "70 mL", "label": "EVERY BEAT"}},
-  {"say": "That's around seven thousand liters a day. A full bathtub every half hour.", "visual": {"type": "tubs", "count": 48, "title": "7,000 LITERS A DAY"}},
-  {"say": "Follow for more of your body, counted.", "visual": {"type": "end"}}
- ]
+  {
+   "say": "You think your heart rests when you sleep. It doesn't.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "Tonight, while you sleep, it will still beat tens of thousands of times.",
+   "visual": {
+    "type": "counter",
+    "value": 28800,
+    "label": "BEATS WHILE YOU SLEEP",
+    "note": "8 hours × 60 beats per minute"
+   }
+  },
+  {
+   "say": "By tomorrow, that's over one hundred thousand beats.",
+   "visual": {
+    "type": "linegraph",
+    "title": "YOUR HEARTBEATS IN ONE DAY",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      8,
+      28800
+     ],
+     [
+      24,
+      103680
+     ]
+    ],
+    "xmax": 24,
+    "ymax": 120000,
+    "xlabels": [
+     "12am",
+     "6am",
+     "12pm",
+     "6pm",
+     "12am"
+    ],
+    "ylabels": [
+     "0",
+     "30k",
+     "60k",
+     "90k",
+     "120k"
+    ],
+    "bands": [
+     [
+      0,
+      8,
+      "SLEEP"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "But hearts aren't all the same. A mouse's heart beats about six hundred times a minute.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "BEATS PER MINUTE",
+    "items": [
+     [
+      "MOUSE",
+      600,
+      "at rest"
+     ],
+     [
+      "YOU",
+      70,
+      "at rest"
+     ],
+     [
+      "BLUE WHALE",
+      2,
+      "deep dive"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Yours, about seventy.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "BEATS PER MINUTE",
+    "items": [
+     [
+      "MOUSE",
+      600,
+      "at rest"
+     ],
+     [
+      "YOU",
+      70,
+      "at rest"
+     ],
+     [
+      "BLUE WHALE",
+      2,
+      "deep dive"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And a blue whale's can drop to just two.",
+   "visual": {
+    "type": "bars",
+    "show": 3,
+    "title": "BEATS PER MINUTE",
+    "items": [
+     [
+      "MOUSE",
+      600,
+      "at rest"
+     ],
+     [
+      "YOU",
+      70,
+      "at rest"
+     ],
+     [
+      "BLUE WHALE",
+      2,
+      "deep dive"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Inside yours, every beat pushes out about seventy milliliters of blood.",
+   "visual": {
+    "type": "cutaway",
+    "value": "70 mL",
+    "label": "EVERY BEAT"
+   }
+  },
+  {
+   "say": "That's around seven thousand liters a day. A full bathtub every half hour.",
+   "visual": {
+    "type": "tubs",
+    "count": 48,
+    "title": "7,000 LITERS A DAY"
+   }
+  },
+  {
+   "say": "Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "captions": "d4y"
 }
