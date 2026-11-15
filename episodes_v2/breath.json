@@ -1,0 +1,83 @@
+{
+ "organ": "lungs",
+ "seed": 13,
+ "scenes": [
+  {
+   "say": "You think your lungs are two big balloons. They're not.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "Every day, you breathe around twenty thousand times.",
+   "visual": {
+    "type": "counter",
+    "value": 21600,
+    "label": "BREATHS A DAY",
+    "note": "15 breaths per minute × 24 hours"
+   }
+  },
+  {
+   "say": "That's more than ten thousand liters of air. But here's where it gets weird.",
+   "visual": {
+    "type": "counter",
+    "value": 10800,
+    "suffix": " L",
+    "label": "OF AIR EVERY DAY",
+    "note": "about half a liter per breath"
+   }
+  },
+  {
+   "say": "Inside, each lung splits into smaller and smaller tubes.",
+   "visual": {
+    "type": "cutaway"
+   }
+  },
+  {
+   "say": "They end in around four hundred and eighty million tiny air sacs.",
+   "visual": {
+    "type": "counter",
+    "value": 480000000,
+    "label": "TINY AIR SACS",
+    "note": "Ochs et al., 2004"
+   }
+  },
+  {
+   "say": "So how big is that, spread flat?",
+   "visual": {
+    "type": "heart3d",
+    "title": "SPREAD FLAT?"
+   }
+  },
+  {
+   "say": "Around seventy square meters. Thirty five times the area of your skin.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "unit": " m²",
+    "title": "SURFACE AREA",
+    "items": [
+     [
+      "YOUR SKIN",
+      2,
+      "about 2 m²"
+     ],
+     [
+      "YOUR LUNGS",
+      70,
+      "about 70 m²"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Still think they're just two balloons?",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_breath",
+ "voice": "am_michael",
+ "speed": 1.05
+}

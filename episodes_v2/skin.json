@@ -1,0 +1,109 @@
+{
+ "organ": "skin",
+ "seed": 15,
+ "scenes": [
+  {
+   "say": "Your skin is the heaviest organ you have, and you're losing it right now.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "It weighs around three and a half kilos. More than your liver or your brain.",
+   "visual": {
+    "type": "bars",
+    "show": 3,
+    "unit": " kg",
+    "title": "ORGAN WEIGHT",
+    "items": [
+     [
+      "SKIN",
+      3.6,
+      "about 3.6 kg"
+     ],
+     [
+      "LIVER",
+      1.5,
+      "about 1.5 kg"
+     ],
+     [
+      "BRAIN",
+      1.4,
+      "about 1.4 kg"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "But here's the thing. About thirty thousand skin cells fall off you every minute.",
+   "visual": {
+    "type": "counter",
+    "value": 30000,
+    "label": "SKIN CELLS PER MINUTE",
+    "note": "30,000 to 40,000 per minute"
+   }
+  },
+  {
+   "say": "That's over forty million a day. So why don't you run out?",
+   "visual": {
+    "type": "counter",
+    "value": 43200000,
+    "label": "SKIN CELLS A DAY",
+    "note": "30,000 × 1,440 minutes"
+   }
+  },
+  {
+   "say": "Because underneath, new cells are always being made.",
+   "visual": {
+    "type": "cutaway"
+   }
+  },
+  {
+   "say": "Each one takes two to four weeks to climb to the surface, then it flakes away.",
+   "visual": {
+    "type": "linegraph",
+    "title": "A SKIN CELL'S TRIP UP",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      35
+     ],
+     [
+      28,
+      100
+     ]
+    ],
+    "xmax": 28,
+    "ymax": 100,
+    "xlabels": [
+     "day 0",
+     "day 7",
+     "day 14",
+     "day 21",
+     "day 28"
+    ],
+    "ylabels": [
+     "bottom",
+     "",
+     "",
+     "",
+     "surface"
+    ],
+    "bands": []
+   }
+  },
+  {
+   "say": "So the skin you're in right now? You're already losing it.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_skin",
+ "voice": "am_michael",
+ "speed": 1.05
+}

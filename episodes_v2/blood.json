@@ -1,0 +1,84 @@
+{
+ "organ": "rbc",
+ "seed": 14,
+ "heartbeat": true,
+ "scenes": [
+  {
+   "say": "In the time it takes you to read this, your body made millions of new blood cells.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "About two million red blood cells, every single second.",
+   "visual": {
+    "type": "counter",
+    "value": 2000000,
+    "label": "NEW RED BLOOD CELLS",
+    "note": "every second"
+   }
+  },
+  {
+   "say": "That's over one hundred and seventy billion a day. So where do they all come from?",
+   "visual": {
+    "type": "counter",
+    "value": 172800000000,
+    "label": "EVERY DAY",
+    "note": "2 million × 86,400 seconds"
+   }
+  },
+  {
+   "say": "Deep inside your bones, in the soft red marrow.",
+   "visual": {
+    "type": "cutaway",
+    "organ": "bone"
+   }
+  },
+  {
+   "say": "And each one has a deadline.",
+   "visual": {
+    "type": "heart3d",
+    "title": "120 DAYS",
+    "sub": "THEN IT'S RECYCLED"
+   }
+  },
+  {
+   "say": "It lives about a hundred and twenty days. Four times longer than a skin cell.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "unit": " d",
+    "title": "HOW LONG CELLS LIVE",
+    "items": [
+     [
+      "SKIN CELL",
+      28,
+      "about 4 weeks"
+     ],
+     [
+      "RED BLOOD CELL",
+      120,
+      "about 4 months"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Right now, about twenty five trillion of them are moving through you.",
+   "visual": {
+    "type": "heart3d",
+    "title": "25 TRILLION",
+    "sub": "RED BLOOD CELLS IN YOU"
+   }
+  },
+  {
+   "say": "And while you listened, your body made millions more.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_blood",
+ "voice": "am_michael",
+ "speed": 1.05
+}

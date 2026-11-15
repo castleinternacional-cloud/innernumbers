@@ -1,0 +1,86 @@
+{
+ "organ": "brain",
+ "seed": 17,
+ "scenes": [
+  {
+   "say": "You've heard you only use ten percent of your brain. That's a myth.",
+   "visual": {
+    "type": "heart3d",
+    "title": "10%?",
+    "sub": "MYTH"
+   }
+  },
+  {
+   "say": "Your brain has about eighty six billion neurons.",
+   "visual": {
+    "type": "counter",
+    "value": 86000000000,
+    "label": "NEURONS",
+    "note": "Azevedo et al., 2009"
+   }
+  },
+  {
+   "say": "And it is hungry.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "It's only about two percent of your body weight, but it burns about twenty percent of your energy.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "unit": "%",
+    "title": "YOUR BRAIN'S SHARE",
+    "items": [
+     [
+      "BODY WEIGHT",
+      2,
+      "about 2%"
+     ],
+     [
+      "ENERGY USED",
+      20,
+      "about 20%"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "So how much power is that, really? About twenty watts. Less than an old light bulb.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "unit": " W",
+    "title": "POWER",
+    "items": [
+     [
+      "YOUR BRAIN",
+      20,
+      "about 20 W"
+     ],
+     [
+      "OLD LIGHT BULB",
+      60,
+      "60 W"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Inside, it's built in two layers. Gray matter outside, white matter within.",
+   "visual": {
+    "type": "cutaway"
+   }
+  },
+  {
+   "say": "All of it working, all day. So next time someone tells you",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_brain",
+ "voice": "am_michael",
+ "speed": 1.05
+}

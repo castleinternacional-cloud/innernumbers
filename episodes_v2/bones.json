@@ -1,0 +1,73 @@
+{
+ "organ": "bone",
+ "seed": 16,
+ "scenes": [
+  {
+   "say": "Why does a baby have more bones than you?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "A newborn has around three hundred bones.",
+   "visual": {
+    "type": "counter",
+    "value": 300,
+    "label": "BONES AT BIRTH",
+    "note": "about 270 to 300"
+   }
+  },
+  {
+   "say": "You have two hundred and six. So where did the rest go?",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "NUMBER OF BONES",
+    "items": [
+     [
+      "NEWBORN",
+      300,
+      "about 270–300"
+     ],
+     [
+      "ADULT",
+      206,
+      "exactly 206"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "They didn't disappear. They fused together as you grew, like the plates of your skull.",
+   "visual": {
+    "type": "heart3d",
+    "title": "FUSED",
+    "sub": "NOT LOST"
+   }
+  },
+  {
+   "say": "And look where most of them ended up. More than half are in your hands and feet.",
+   "visual": {
+    "type": "counter",
+    "value": 106,
+    "label": "IN YOUR HANDS AND FEET",
+    "note": "27 per hand · 26 per foot"
+   }
+  },
+  {
+   "say": "And every one is alive inside, built in layers.",
+   "visual": {
+    "type": "cutaway"
+   }
+  },
+  {
+   "say": "Which is exactly why a baby has more bones than you.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_bones",
+ "voice": "am_michael",
+ "speed": 1.05
+}

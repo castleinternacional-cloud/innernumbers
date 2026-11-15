@@ -1,0 +1,113 @@
+{
+ "organ": "eye",
+ "seed": 12,
+ "scenes": [
+  {
+   "say": "You're blind for up to half an hour every day. And you never notice.",
+   "visual": {
+    "type": "heart3d",
+    "title": "UP TO 30 MIN",
+    "sub": "WITH YOUR EYES CLOSED"
+   }
+  },
+  {
+   "say": "Every blink shuts your eyes for about a tenth of a second.",
+   "visual": {
+    "type": "counter",
+    "value": 100,
+    "suffix": " ms",
+    "label": "EVERY BLINK",
+    "note": "about 100 to 150 milliseconds"
+   }
+  },
+  {
+   "say": "And you do it around fifteen thousand times a day.",
+   "visual": {
+    "type": "counter",
+    "value": 14400,
+    "label": "BLINKS A DAY",
+    "note": "15 per minute × 16 waking hours"
+   }
+  },
+  {
+   "say": "Add it all up, and that's up to half an hour of darkness. But that's not the strange part.",
+   "visual": {
+    "type": "linegraph",
+    "title": "MINUTES WITH EYES CLOSED",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      30
+     ]
+    ],
+    "xmax": 16,
+    "ymax": 40,
+    "xlabels": [
+     "7am",
+     "11am",
+     "3pm",
+     "7pm",
+     "11pm"
+    ],
+    "ylabels": [
+     "0",
+     "10",
+     "20",
+     "30",
+     "40"
+    ],
+    "bands": []
+   }
+  },
+  {
+   "say": "You blink about seventeen times a minute at rest. Twenty six when you talk. And only four when you read.",
+   "visual": {
+    "type": "bars",
+    "show": 3,
+    "title": "BLINKS PER MINUTE",
+    "items": [
+     [
+      "RESTING",
+      17,
+      "relaxed"
+     ],
+     [
+      "TALKING",
+      26,
+      "conversation"
+     ],
+     [
+      "READING",
+      4,
+      "focused"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "So what is each blink actually doing?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "It spreads fresh tears over the front of your eye, and your brain edits out the darkness.",
+   "visual": {
+    "type": "cutaway"
+   }
+  },
+  {
+   "say": "So you never notice that",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "id": "v2_blink",
+ "voice": "am_michael",
+ "speed": 1.05
+}

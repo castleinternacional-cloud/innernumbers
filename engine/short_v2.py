@@ -6,7 +6,8 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, os.path.dirname(__file__))
 import render as R
-from heart3d import f_heart, surface_points, volume_points, rot, project
+from heart3d import rot, project
+import organs as O
 from styles import splat, glow, bokeh_layer, heartbeat_scale, font, FB, FBo, FM
 
 W, H, FPS = 1080, 1920, 30
@@ -18,19 +19,21 @@ RED = np.array([255, 60, 80.]); BLUE = np.array([60, 170, 255.]); WHITE = np.arr
 def ease(x): x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
 
 # ------------------------------------------------------------------ shared geometry
-NS = 5000
-SURF = surface_points(NS, rng); VOL = volume_points(N - NS, rng) * 0.97
-HEART = np.concatenate([SURF, VOL])
-IS_VOL = np.r_[np.zeros(NS, bool), np.ones(N - NS, bool)]
 PH = rng.uniform(0, 1, N)
 DUST = np.stack([rng.uniform(0, W, N), rng.uniform(0, H, N)], 1)
+EP_ORGAN = ["heart"]
 
-def heart_screen(t, scale=330, cy=H * 0.45, cx=W / 2, spin=1.0):
-    Rm = rot(0.55 * math.sin(t * 0.9) * spin, 0.2 + 0.08 * math.sin(t * 0.7))
-    Q = (HEART * heartbeat_scale(t)) @ Rm.T
+def organ_of(sc):
+    return O.get(sc["visual"].get("organ", EP_ORGAN[0]))
+
+def organ_screen(o, t, scale=330, cy=H * 0.45, cx=W / 2, rot_amt=1.0):
+    Rm = rot(o.view_rot * rot_amt + 0.5 * math.sin(t * 0.9) * rot_amt, o.view_tilt * rot_amt + 0.08 * math.sin(t * 0.7))
+    Q = (o.P * o.pulse(t)) @ Rm.T
     x, y, k = project(Q, W, H, scale, cx=cx, cy=cy)
-    tt = np.clip((HEART[:, 2] + 1.2) / 2.6, 0, 1)[:, None]
-    col = np.where(tt < .5, PINK + (VIOLET - PINK) * tt * 2, VIOLET + (CYAN - VIOLET) * (tt - .5) * 2)
+    p0, p1, p2 = [np.array(c, float) for c in o.pal]
+    tt = np.clip((o.P[:, 2] + 1.2) / 2.6, 0, 1)[:, None]
+    col = np.where(tt < .5, p0 + (p1 - p0) * tt * 2, p1 + (p2 - p1) * (tt - .5) * 2)
+    if hasattr(o, "surface_colors"): col[~o.is_vol] = o.surface_colors(o.P[~o.is_vol])
     col = col * (1.25 - ((Q[:, 1] + 1.5) / 3) * 0.8)[:, None]
     return np.stack([x, y], 1), col, Q
 
@@ -44,15 +47,25 @@ def fill_rect_targets(idx, x0, y0, x1, y1):
 
 # ------------------------------------------------------------------ scenes: each returns (targets, colors, overlay_fn)
 def sc_heart(sc, t, lt):
-    p, c, _ = heart_screen(t)
-    return p, c, None
+    p, c, _ = organ_screen(organ_of(sc), t)
+    v = sc["visual"]
+    def ov(d):
+        if v.get("title"):
+            a = ease((lt - 0.2) / 0.4); g = int(255 * a)
+            fit_text(d, v["title"], H * 0.16, 170, (g, g, g))
+            if v.get("sub"): d.text((W / 2, H * 0.16 + 120), v["sub"], font=font(FBo, 52), fill=(g, int(g * .82), int(g * .88)), anchor="mm")
+    return p, c, ov
+
+def fit_text(d, txt, y, size, fill, maxw=W * 0.9):
+    while size > 40 and d.textlength(txt, font=font(FB, size)) > maxw: size -= 6
+    d.text((W / 2, y), txt, font=font(FB, size), fill=fill, anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
 
 def sc_counter(sc, t, lt):
-    p, c, _ = heart_screen(t, scale=200, cy=H * 0.56)
+    p, c, _ = organ_screen(organ_of(sc), t, scale=200, cy=H * 0.56)
     v = sc["visual"]; target = v["value"]; dur = sc["_dur"]
     def ov(d):
         x = ease(lt / max(0.5, dur * 0.8)); val = int(target * (1 - (1 - x) ** 3))
-        d.text((W / 2, H * 0.27), f"{val:,}", font=font(FB, 190), fill=(255, 255, 255), anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
+        fit_text(d, f"{val:,}" + v.get("suffix", ""), H * 0.27, 190, (255, 255, 255))
         d.text((W / 2, H * 0.27 + 130), v.get("label", ""), font=font(FBo, 54), fill=(255, 210, 225), anchor="mm")
         if v.get("note"): d.text((W / 2, H * 0.27 + 200), v["note"], font=font(FM, 40), fill=(170, 180, 210), anchor="mm")
     return p, c * 0.8, ov
@@ -125,46 +138,47 @@ def sc_bars(sc, t, lt, state):
         for (x0, y0, x1, y1, grow, name, val, sub) in rects:
             if grow <= 0: continue
             cx = (x0 + x1) / 2
-            d.text((cx, min(y0, base - 6) - 50), f"{int(val * grow):,}", font=font(FB, 70), fill=(255, 255, 255), anchor="mm", stroke_width=5, stroke_fill=(0, 0, 0))
+            vv = val * grow; txt = f"{vv:.1f}" if (val < 10 and val != int(val)) else f"{int(round(vv)):,}"
+            d.text((cx, min(y0, base - 6) - 50), txt + v.get("unit", ""), font=font(FB, 70), fill=(255, 255, 255), anchor="mm", stroke_width=5, stroke_fill=(0, 0, 0))
             d.text((cx, base + 55), name, font=font(FBo, 42), fill=(230, 235, 255), anchor="mm")
             d.text((cx, base + 105), sub, font=font(FM, 32), fill=(150, 160, 190), anchor="mm")
     return tg, col, ov
 
 def sc_cutaway(sc, t, lt):
-    sep = ease((lt - 0.3) / 1.0)
-    Rm = rot(0.25 * math.sin(t * 0.6) * (1 - sep), 0.12 * (1 - sep))
-    P = HEART * heartbeat_scale(t)
-    front = (~IS_VOL) & (P[:, 1] < 0)
+    o = organ_of(sc); P0 = o.P; IV = o.is_vol
+    turn = ease(lt / 0.6); sep = ease((lt - 0.5) / 1.0)
+    Rm = rot((o.view_rot + 0.3 * math.sin(t * 0.6)) * (1 - turn), o.view_tilt * (1 - turn))
+    P = P0 * o.pulse(t)
+    front = (~IV) & (P[:, 1] < 0)
     Pm = P.copy()
     Pm[front, 1] -= 2.4 * sep; Pm[front, 0] += np.sign(P[front, 0] + 1e-6) * 1.2 * sep
-    Pm[IS_VOL, 1] = P[IS_VOL, 1] * (1 - sep)          # interior collapses onto the cut plane
+    Pm[IV, 1] = P[IV, 1] * (1 - sep)
     Q = Pm @ Rm.T
     x, y, k = project(Q, W, H, 330, cy=H * 0.47)
-    def ell(cx, cz, rx, rz): return ((P[:, 0] - cx) / rx) ** 2 + ((P[:, 2] - cz) / rz) ** 2
-    e = np.minimum.reduce([ell(0.3, -0.25, 0.26, 0.42), ell(-0.3, -0.2, 0.22, 0.36), ell(0.32, 0.42, 0.22, 0.16), ell(-0.32, 0.44, 0.2, 0.15)])
-    col = np.tile(PINK * 0.7, (N, 1))
-    pulse = 1 + 0.35 * math.sin(t * 7.3)
-    muscle = IS_VOL & (e >= 1.15); wall = IS_VOL & (e >= 0.85) & (e < 1.15); cav = IS_VOL & (e < 0.85)
-    col[muscle] = np.array([255, 70, 100]) * 1.7
-    col[wall] = np.array([255, 220, 235]) * 2.0
-    col[cav] = np.array([90, 0, 20]) * 0.6 * pulse
-    col[(~IS_VOL) & ~front] *= 0.25
+    p0, p1, p2 = [np.array(c, float) for c in o.pal]
+    col = np.tile(p1 * 0.7, (N, 1))
+    col[IV] = col[IV] * (1 - sep) + o.slice_colors(P0[IV]) * sep * 1.6
+    col[(~IV) & ~front] *= 0.15 + 0.85 * (1 - sep)
     col[front] *= np.clip(1 - sep * 1.6, 0, 1)
     tg = np.stack([x, y], 1)
+    v = sc["visual"]
     def ov(d):
-        a = ease((lt - 1.1) / 0.5)
-        if a > 0:
-            v = int(255 * a)
-            d.text((W / 2, H * 0.15), sc["visual"].get("value", ""), font=font(FB, 150), fill=(v, v, v), anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
-            d.text((W / 2, H * 0.15 + 110), sc["visual"].get("label", ""), font=font(FBo, 52), fill=(v, int(v * .8), int(v * .85)), anchor="mm")
-            labs = [("LEFT VENTRICLE", (0.3, -0.25), 1), ("RIGHT VENTRICLE", (-0.3, -0.2), -1), ("ATRIA", (0.0, 0.43), 0)]
-            for name, (px, pz), side in labs:
-                sx, sy = W / 2 + px * 330 * 1.0, H * 0.47 - pz * 330
-                ex = sx + side * 170 if side else sx; ey = sy + (230 if side else -170) * (1 if side else 1)
-                ey = sy + 260 if side else sy - 190
-                d.ellipse([sx - 8, sy - 8, sx + 8, sy + 8], outline=(v, v, v), width=4)
-                d.line([(sx, sy), (ex, ey)], fill=(v, v, v), width=3)
-                d.text((ex, ey + (30 if side else -30)), name, font=font(FBo, 38), fill=(v, v, v), anchor="mm", stroke_width=4, stroke_fill=(0, 0, 0))
+        a = ease((lt - 1.4) / 0.5)
+        if a <= 0: return
+        g = int(255 * a)
+        if v.get("value"):
+            fit_text(d, v["value"], H * 0.15, 150, (g, g, g))
+            d.text((W / 2, H * 0.15 + 110), v.get("label", ""), font=font(FBo, 52), fill=(g, int(g * .8), int(g * .85)), anchor="mm")
+        for i, (name, (px, pz), side) in enumerate(v.get("labels_override", None) or o.labels):
+            aa = np.clip(a * 2 - i * 0.3, 0, 1); gg = int(255 * aa)
+            if gg <= 0: continue
+            sx, sy = W / 2 + px * 330, H * 0.47 - pz * 330
+            if side: ex, ey = sx + side * 120, sy + 230
+            else: ex, ey = sx, sy - 200
+            ex = min(max(ex, 230), W - 230)
+            d.ellipse([sx - 8, sy - 8, sx + 8, sy + 8], outline=(gg, gg, gg), width=4)
+            d.line([(sx, sy), (ex, ey)], fill=(gg, gg, gg), width=3)
+            d.text((ex, ey + (30 if side else -30)), name, font=font(FBo, 38), fill=(gg, gg, gg), anchor="mm", stroke_width=4, stroke_fill=(0, 0, 0))
     return tg, col, ov
 
 def tub_icon(d, x, y, w, h, fill, colr):
@@ -194,7 +208,7 @@ def sc_tubs(sc, t, lt):
     return dp, dc, ov
 
 def sc_end(sc, t, lt):
-    p, c, _ = heart_screen(t, scale=230, cy=H * 0.40)
+    p, c, _ = organ_screen(organ_of(sc), t, scale=230, cy=H * 0.40)
     def ov(d):
         d.text((W / 2, H * 0.60), "INNER NUMBERS", font=font(FB, 96), fill=(240, 245, 255), anchor="mm")
         d.text((W / 2, H * 0.60 + 85), "your body, counted", font=font(FM, 48), fill=(0, 230, 255), anchor="mm")
@@ -233,8 +247,9 @@ def word_timing(scenes):
 
 def main(ep_path, outdir):
     ep = json.load(open(ep_path)); os.makedirs(outdir, exist_ok=True)
+    EP_ORGAN[0] = ep.get("organ", "heart")
     timings, dur = R.make_voice(ep, outdir)
-    R.make_music(dur + 0.8, outdir, heartbeat=True, seed=ep.get("seed", 3))
+    R.make_music(dur + 0.8, outdir, heartbeat=ep.get("heartbeat", EP_ORGAN[0] == "heart"), seed=ep.get("seed", 3))
     scenes = ep["scenes"]
     for sc, (a, b) in zip(scenes, timings):
         sc["_t0"], sc["_t1"] = a, b; sc["_dur"] = b - a + R.GAP
