@@ -1,0 +1,76 @@
+{
+ "id": "ep003",
+ "topic": "breathing",
+ "palette": "lime",
+ "seed": 33,
+ "title": "You breathe 20,000 times a day 🫁 #shorts",
+ "description": "At rest, adults take about 12–20 breaths a minute — around 20,000 breaths a day. Each calm breath moves about half a liter of air, so you move over 10,000 liters of air daily, into roughly 480 million tiny air sacs.\nMath: 15/min × 1,440 min = 21,600 breaths; × 0.5 L ≈ 10,800 L.\nSources: Cleveland Clinic (vital signs, 12–20 breaths/min); Ochs et al. 2004, Am J Respir Crit Care Med (mean 480 million alveoli).\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "breathing",
+  "lungs",
+  "human body",
+  "body facts",
+  "science shorts"
+ ],
+ "scenes": [
+  {
+   "say": "You'll breathe about twenty thousand times today.",
+   "visual": {
+    "type": "number",
+    "value": "20,000",
+    "label": "breaths today"
+   }
+  },
+  {
+   "say": "At rest, an adult takes twelve to twenty breaths every minute.",
+   "visual": {
+    "type": "number",
+    "value": "12–20",
+    "label": "breaths per minute"
+   }
+  },
+  {
+   "say": "Each calm breath moves about half a liter of air.",
+   "visual": {
+    "type": "number",
+    "value": "0.5 L",
+    "label": "per breath"
+   }
+  },
+  {
+   "say": "That's more than ten thousand liters of air, every single day.",
+   "visual": {
+    "type": "flow",
+    "value": "10,000 L",
+    "label": "of air a day"
+   }
+  },
+  {
+   "say": "Now follow that air inside.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Windpipe",
+     "Bronchi",
+     "Bronchioles",
+     "Air sacs"
+    ]
+   }
+  },
+  {
+   "say": "It ends in around four hundred and eighty million tiny air sacs.",
+   "visual": {
+    "type": "number",
+    "value": "480 MILLION",
+    "label": "air sacs"
+   }
+  },
+  {
+   "say": "All without you thinking about it. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}

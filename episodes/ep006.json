@@ -1,0 +1,66 @@
+{
+ "id": "ep006",
+ "topic": "bones",
+ "palette": "ice",
+ "seed": 66,
+ "title": "You were born with 300 bones. Now you have 206 🦴 #shorts",
+ "description": "Babies are born with about 270–300 bones; many fuse as we grow, leaving adults with 206. More than half — 106 — are in the hands and feet (27 per hand, 26 per foot).\nSources: Cleveland Clinic 'Skeletal System'; Encyclopaedia Britannica 'Human skeleton'.\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "bones",
+  "skeleton",
+  "human body",
+  "body facts",
+  "science shorts"
+ ],
+ "scenes": [
+  {
+   "say": "You were born with around three hundred bones.",
+   "visual": {
+    "type": "number",
+    "value": "300",
+    "label": "bones at birth"
+   }
+  },
+  {
+   "say": "Today, you have two hundred and six.",
+   "visual": {
+    "type": "number",
+    "value": "206",
+    "label": "adult bones"
+   }
+  },
+  {
+   "say": "They didn't disappear. Many of them fused together as you grew.",
+   "visual": {
+    "type": "heart"
+   }
+  },
+  {
+   "say": "And every bone is built in layers.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Outer skin of bone",
+     "Compact bone",
+     "Spongy bone",
+     "Marrow"
+    ]
+   }
+  },
+  {
+   "say": "More than half of all your bones are in your hands and feet.",
+   "visual": {
+    "type": "number",
+    "value": "106",
+    "label": "in hands and feet"
+   }
+  },
+  {
+   "say": "Look at your hands. Fifty four bones. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}

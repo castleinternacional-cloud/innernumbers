@@ -1,0 +1,67 @@
+{
+ "id": "ep004",
+ "topic": "red blood cells",
+ "palette": "blood",
+ "seed": 44,
+ "heartbeat": true,
+ "title": "Your body makes 2 million blood cells every second 🩸 #shorts",
+ "description": "Your bone marrow makes over 2 million new red blood cells every second. Each lives about 120 days, and at any moment around 25 trillion are circulating — more than all your other cells combined.\nSources: Stanford Blood Center (2 million/second, ~120 days); Sender, Fuchs & Milo 2016, PLOS Biology (~25 trillion red blood cells, ~84% of human cells).\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "blood",
+  "red blood cells",
+  "bone marrow",
+  "human body",
+  "science shorts"
+ ],
+ "scenes": [
+  {
+   "say": "In the last second, your body made two million new red blood cells.",
+   "visual": {
+    "type": "number",
+    "value": "2,000,000",
+    "label": "every second"
+   }
+  },
+  {
+   "say": "They're built deep inside your bones.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Hard outer bone",
+     "Spongy bone",
+     "Red marrow",
+     "New blood cells"
+    ]
+   }
+  },
+  {
+   "say": "Each one lives for about one hundred and twenty days.",
+   "visual": {
+    "type": "number",
+    "value": "120 DAYS",
+    "label": "lifespan"
+   }
+  },
+  {
+   "say": "Right now, around twenty five trillion of them are moving through you.",
+   "visual": {
+    "type": "flow",
+    "value": "25 TRILLION",
+    "label": "red blood cells"
+   }
+  },
+  {
+   "say": "That's more than all your other cells put together.",
+   "visual": {
+    "type": "heart"
+   }
+  },
+  {
+   "say": "And it never stops. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}

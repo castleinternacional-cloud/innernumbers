@@ -1,0 +1,68 @@
+{
+ "id": "ep002",
+ "topic": "blinking",
+ "palette": "ice",
+ "seed": 22,
+ "title": "You blink about 15,000 times a day 👁️ #shorts",
+ "description": "Adults blink about 15–20 times a minute — roughly 15,000 times in a waking day. Each blink lasts about a tenth of a second, and every one spreads a fresh tear film over your eye. When you read or stare at a screen, it can drop to 3–4 blinks a minute.\nMath: 15/min × 960 waking minutes ≈ 14,400.\nSources: American Academy of Ophthalmology; UCL (blink duration 100–150 ms); Wikipedia 'Blinking' (reading 3–4/min).\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "blinking",
+  "eyes",
+  "human body",
+  "body facts",
+  "science shorts"
+ ],
+ "scenes": [
+  {
+   "say": "You'll blink around fifteen thousand times today.",
+   "visual": {
+    "type": "number",
+    "value": "15,000",
+    "label": "blinks today"
+   }
+  },
+  {
+   "say": "Fifteen to twenty times every minute, and you barely notice.",
+   "visual": {
+    "type": "number",
+    "value": "15–20",
+    "label": "blinks per minute"
+   }
+  },
+  {
+   "say": "Each blink lasts about a tenth of a second.",
+   "visual": {
+    "type": "number",
+    "value": "0.1 s",
+    "label": "per blink"
+   }
+  },
+  {
+   "say": "And every blink spreads a fresh film of tears, in layers, across your eye.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Oily layer",
+     "Watery layer",
+     "Mucus layer",
+     "Cornea"
+    ]
+   }
+  },
+  {
+   "say": "But when you read or stare at a screen, it can drop to three or four a minute.",
+   "visual": {
+    "type": "number",
+    "value": "3–4",
+    "label": "while staring at a screen"
+   }
+  },
+  {
+   "say": "That's why your eyes feel dry right now. Blink. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}

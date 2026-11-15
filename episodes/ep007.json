@@ -1,0 +1,68 @@
+{
+ "id": "ep007",
+ "topic": "brain",
+ "palette": "aurora",
+ "seed": 77,
+ "title": "Your brain runs on 20 watts 🧠 #shorts",
+ "description": "Your brain has about 86 billion neurons. It's roughly 2% of body weight but uses about 20% of your energy at rest — around 20 watts, less than a light bulb.\nSources: Azevedo et al. 2009, J Comp Neurol (86 billion neurons); Raichle & Gusnard 2002, PNAS (brain ~2% of body mass, ~20% of energy).\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "brain",
+  "neurons",
+  "human body",
+  "body facts",
+  "science shorts"
+ ],
+ "scenes": [
+  {
+   "say": "Your brain has about eighty six billion neurons.",
+   "visual": {
+    "type": "number",
+    "value": "86 BILLION",
+    "label": "neurons"
+   }
+  },
+  {
+   "say": "It's only about two percent of your body weight.",
+   "visual": {
+    "type": "number",
+    "value": "2%",
+    "label": "of your weight"
+   }
+  },
+  {
+   "say": "But it uses about twenty percent of your energy.",
+   "visual": {
+    "type": "number",
+    "value": "20%",
+    "label": "of your energy"
+   }
+  },
+  {
+   "say": "Let's go inside.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Skull",
+     "Protective membranes",
+     "Gray matter",
+     "White matter"
+    ]
+   }
+  },
+  {
+   "say": "All of that runs on about twenty watts. Less than a light bulb.",
+   "visual": {
+    "type": "flow",
+    "value": "20 W",
+    "label": "of power"
+   }
+  },
+  {
+   "say": "And it's reading this right now. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ep001",
+  "topic": "heartbeats",
+  "palette": "aurora",
+  "heartbeat": true,
+  "seed": 11,
+  "voice": "am_michael",
+  "title": "Your heart beats 100,000 times today 🫀 #shorts",
+  "description": "Your heart beats about 100,000 times a day — roughly 70 times a minute, nonstop. Over a lifetime that's close to 3 billion beats, and every day it pumps around 7,000 liters of blood.\n\nMath: 70 beats/min × 1,440 min ≈ 100,800 beats/day. 70 mL per beat × 100,800 ≈ 7,000 L/day.\nSources: American Heart Association (resting heart rate 60–100 bpm); Cleveland Clinic (heart pumps ~2,000 gallons ≈ 7,500 L of blood a day).\n\nInner Numbers — your body, counted. New Short every day.\n#body #heart #science #humanbody #facts",
+  "tags": ["heart", "human body", "body facts", "science shorts", "heartbeat", "inner numbers"],
+  "sources": [
+    "https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates",
+    "https://my.clevelandclinic.org/health/body/21704-heart"
+  ],
+  "scenes": [
+    {"say": "Your heart will beat about one hundred thousand times today.", "visual": {"type": "number", "value": "100,000", "label": "beats today"}},
+    {"say": "That's seventy beats every minute, without a single break.", "visual": {"type": "heart"}},
+    {"say": "In one year, that's more than thirty six million beats.", "visual": {"type": "number", "value": "36,000,000", "label": "beats a year"}},
+    {"say": "And in a whole lifetime? Close to three billion.", "visual": {"type": "number", "value": "3 BILLION", "label": "beats in a lifetime"}},
+    {"say": "But look at what happens inside.", "visual": {"type": "layers", "layers": ["Outer sac", "Heart muscle", "Four chambers", "Your blood"]}},
+    {"say": "Every beat squeezes out about seventy milliliters of blood.", "visual": {"type": "number", "value": "70 mL", "label": "per beat"}},
+    {"say": "Do the math, and your heart pumps around seven thousand liters a day.", "visual": {"type": "flow", "value": "7,000 L", "label": "every single day"}},
+    {"say": "Right now. While you watch this. Follow for more of your body, counted.", "visual": {"type": "end"}}
+  ]
+}

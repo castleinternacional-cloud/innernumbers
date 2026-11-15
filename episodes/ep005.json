@@ -1,0 +1,60 @@
+{
+ "id": "ep005",
+ "topic": "skin",
+ "palette": "ember",
+ "seed": 55,
+ "title": "You lose 30,000 skin cells every minute #shorts",
+ "description": "You shed about 30,000–40,000 skin cells every minute — tens of millions a day. New cells form at the bottom of the epidermis and take roughly 2–4 weeks to reach the surface.\nMath: 30,000 × 1,440 ≈ 43 million a day.\nSources: Cleveland Clinic; KidsHealth (Nemours) 'Your Skin' (30,000–40,000 per minute; 2 weeks to a month to rise).\n\nInner Numbers — your body, counted. New Short every day.\nEducational content, not medical advice.",
+ "tags": [
+  "skin",
+  "human body",
+  "body facts",
+  "science shorts",
+  "skin cells"
+ ],
+ "scenes": [
+  {
+   "say": "In the last minute, you lost about thirty thousand skin cells.",
+   "visual": {
+    "type": "number",
+    "value": "30,000",
+    "label": "skin cells a minute"
+   }
+  },
+  {
+   "say": "That's over forty million every single day.",
+   "visual": {
+    "type": "number",
+    "value": "40 MILLION",
+    "label": "every day"
+   }
+  },
+  {
+   "say": "So let's cut through your skin.",
+   "visual": {
+    "type": "layers",
+    "layers": [
+     "Epidermis",
+     "Dermis",
+     "Fat layer",
+     "Muscle"
+    ]
+   }
+  },
+  {
+   "say": "New cells are born at the bottom and take two to four weeks to reach the surface.",
+   "visual": {
+    "type": "number",
+    "value": "2–4 WEEKS",
+    "label": "bottom to top"
+   }
+  },
+  {
+   "say": "Then they flake off. The skin you see is always being rebuilt. Follow for more of your body, counted.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ],
+ "voice": "am_michael"
+}
