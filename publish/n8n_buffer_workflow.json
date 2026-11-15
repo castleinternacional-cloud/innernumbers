@@ -1,0 +1,227 @@
+{
+ "name": "Inner Numbers – Publicar semana en Buffer",
+ "nodes": [
+  {
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "field": "cronExpression",
+       "expression": "0 18 * * 0"
+      }
+     ]
+    }
+   },
+   "name": "Cada domingo 18:00",
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2,
+   "position": [
+    0,
+    0
+   ],
+   "id": "09052195-f7db-4d72-ac0b-f4a6c7f71a92"
+  },
+  {
+   "parameters": {},
+   "name": "Ejecutar a mano",
+   "type": "n8n-nodes-base.manualTrigger",
+   "typeVersion": 1,
+   "position": [
+    0,
+    200
+   ],
+   "id": "0e9324dc-563a-4683-bbcf-1a7191a03f3f"
+  },
+  {
+   "parameters": {
+    "method": "GET",
+    "url": "={{ 'https://raw.githubusercontent.com/castleinternacional-cloud/innernumbers/main/publish/schedule.json?t=' + $now.toMillis() }}",
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "json"
+      }
+     }
+    }
+   },
+   "name": "Leer calendario (GitHub)",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    240,
+    100
+   ],
+   "id": "47f81db5-67fb-4991-b294-1588be921429"
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "https://api.buffer.com",
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "json"
+      }
+     }
+    },
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify({ query: \"query { account { organizations { id name } } }\" }) }}"
+   },
+   "name": "Buffer: organización",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    480,
+    100
+   ],
+   "id": "7ab7aca3-bc32-4364-868e-620ac5d277f6"
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "https://api.buffer.com",
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "json"
+      }
+     }
+    },
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify({ query: \"query($id: OrganizationId!) { channels(input: { organizationId: $id }) { id name displayName service isQueuePaused } }\", variables: { id: $json.data.account.organizations[0].id } }) }}"
+   },
+   "name": "Buffer: canales",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    720,
+    100
+   ],
+   "id": "8f6f0305-a9cd-47d6-8ef9-b86c5da910f5"
+  },
+  {
+   "parameters": {
+    "jsCode": "\n// Junta el calendario de GitHub con los canales de Buffer y prepara un post por canal\nconst cal = $('Leer calendario (GitHub)').first().json;\nconst chans = $('Buffer: canales').first().json.data.channels;\nconst now = Date.now() + 10 * 60 * 1000; // solo posts al menos 10 min en el futuro\nconst out = [];\nconst mutation = `mutation CreatePost($input: CreatePostInput!) {\n  createPost(input: $input) {\n    __typename\n    ... on PostActionSuccess { post { id dueAt } }\n    ... on MutationError { message }\n  }\n}`;\nfor (const p of cal.posts) {\n  if (new Date(p.dueAt).getTime() < now) continue;\n  for (const c of chans) {\n    const s = (c.service || '').toLowerCase();\n    let metadata = null;\n    if (s === 'youtube') metadata = { youtube: { title: p.title, privacy: 'public', categoryId: '27', madeForKids: false, notifySubscribers: true } };\n    else if (s === 'instagram') metadata = { instagram: { type: 'reel', shouldShareToFeed: true } };\n    else if (s === 'tiktok') metadata = { tiktok: { title: p.title } };\n    else if (s === 'facebook') metadata = { facebook: { type: 'reel' } };\n    else continue;\n    const input = {\n      channelId: c.id, text: p.text, schedulingType: 'automatic', mode: 'customScheduled',\n      dueAt: p.dueAt, assets: [{ video: { url: p.video } }], metadata\n    };\n    out.push({ json: { ep: p.ep, channel: c.service + ' · ' + (c.displayName || c.name), dueAt: p.dueAt,\n                       body: { query: mutation, variables: { input } } } });\n  }\n}\nif (out.length === 0) return [{ json: { aviso: 'No hay posts futuros en el calendario' } }];\nreturn out;\n"
+   },
+   "name": "Preparar posts",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    960,
+    100
+   ],
+   "id": "c2f7464e-f4f0-4ce1-bf80-86dd77b41e9e"
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "https://api.buffer.com",
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "json"
+      }
+     },
+     "batching": {
+      "batch": {
+       "batchSize": 1,
+       "batchInterval": 1500
+      }
+     }
+    },
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify($json.body) }}"
+   },
+   "name": "Programar en Buffer",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    1200,
+    100
+   ],
+   "id": "ab6f36a1-c002-4cff-8640-07b05893d1ea"
+  }
+ ],
+ "connections": {
+  "Cada domingo 18:00": {
+   "main": [
+    [
+     {
+      "node": "Leer calendario (GitHub)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Ejecutar a mano": {
+   "main": [
+    [
+     {
+      "node": "Leer calendario (GitHub)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Leer calendario (GitHub)": {
+   "main": [
+    [
+     {
+      "node": "Buffer: organización",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Buffer: organización": {
+   "main": [
+    [
+     {
+      "node": "Buffer: canales",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Buffer: canales": {
+   "main": [
+    [
+     {
+      "node": "Preparar posts",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Preparar posts": {
+   "main": [
+    [
+     {
+      "node": "Programar en Buffer",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1",
+  "timezone": "America/Bogota"
+ },
+ "pinData": {}
+}
