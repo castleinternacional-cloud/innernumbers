@@ -22,6 +22,7 @@ def ease(x): x = np.clip(x, 0, 1); return x * x * (3 - 2 * x)
 PH = rng.uniform(0, 1, N)
 DUST = np.stack([rng.uniform(0, W, N), rng.uniform(0, H, N)], 1)
 EP_ORGAN = ["heart"]
+SLICE_GAIN = 0.45
 
 def organ_of(sc):
     return O.get(sc["visual"].get("organ", EP_ORGAN[0]))
@@ -152,13 +153,13 @@ def sc_cutaway(sc, t, lt):
     front = (~IV) & (P[:, 1] < 0)
     Pm = P.copy()
     Pm[front, 1] -= 2.4 * sep; Pm[front, 0] += np.sign(P[front, 0] + 1e-6) * 1.2 * sep
-    Pm[IV, 1] = P[IV, 1] * (1 - sep)
+    flat = IV | ((~IV) & ~front)
+    Pm[flat, 1] = P[flat, 1] * (1 - sep)
     Q = Pm @ Rm.T
     x, y, k = project(Q, W, H, 330, cy=H * 0.47)
     p0, p1, p2 = [np.array(c, float) for c in o.pal]
     col = np.tile(p1 * 0.7, (N, 1))
-    col[IV] = col[IV] * (1 - sep) + o.slice_colors(P0[IV]) * sep * 1.6
-    col[(~IV) & ~front] *= 0.15 + 0.85 * (1 - sep)
+    col[flat] = col[flat] * (1 - sep) + o.slice_colors(P0[flat]) * sep * SLICE_GAIN
     col[front] *= np.clip(1 - sep * 1.6, 0, 1)
     tg = np.stack([x, y], 1)
     v = sc["visual"]
