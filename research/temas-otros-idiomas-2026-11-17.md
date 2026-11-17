@@ -14,3 +14,8 @@ Fuente: vidiq_outliers (es, pt), ≥100K vistas, engagement ≥1.5 %. "breakout"
 ## Descartados (consejo de salud/suplementos/fármacos — no es el nicho)
 Creatina, metformina, tirzepatida/Mounjaro, bicarbonato, té de clavo, plátano diario, ejercicios 60+, etc.
 Patrón dominante en pt: "O que acontece com seu corpo quando/se..." (Julio Luchmann: varios 25x–200x).
+
+## Vídeo largo #1 — "Stop Showering" (sábado 21-nov-2026)
+Títulos: (1) What Happens to Your Body If You Stop Showering for 30 Days · (2) Stop Showering for 30 Days: Your Body, Counted · (3) Day 1 vs Day 30 Without a Shower (What Lives on You)
+Miniaturas: A "DAY 30 / NO SHOWER", B "1,300,000,000 SKIN CELLS. GONE.", C "DAY 1 vs DAY 30" (principal).
+Feedback de Mathias para el próximo largo: ~95 % del vídeo era la misma célula de piel, sin edición → más variedad visual (escenas/objetos distintos, cortes, movimientos de cámara en momentos clave) y voz con ElevenLabs.
