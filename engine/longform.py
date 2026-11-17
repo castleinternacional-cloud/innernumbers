@@ -101,10 +101,10 @@ def sc_cold(sc, t, lt):
 
 def sc_title(sc, t, lt):
     v = sc["visual"]
-    x, y, c = organ_pts(v.get("organ", "brain"), t, 280, W * 0.77, H * 0.52)
+    x, y, c = organ_pts(v.get("organ", "brain"), t, 260, W * 0.79, H * 0.52)
     dx, dy, dc = dust(t)
     im = compose(t, [(dx, dy, dc, 1), (x, y, c, 2)]); d = ImageDraw.Draw(im)
-    heading(d, ease((lt - 0.2) / 0.5), v.get("kicker"), v["title"], v.get("sub"), y=260, size=108)
+    heading(d, ease((lt - 0.2) / 0.5), v.get("kicker"), v["title"], v.get("sub"), y=260, size=100)
     return im
 
 def clock_txt(h): return f"{int(h):02d}:00"
@@ -113,18 +113,18 @@ def sc_clock(sc, t, lt):
     """Chapter: big hour counter on the left, organ dimming on the right, a fact card."""
     v = sc["visual"]; h0, h1 = v.get("from", 0), v["hour"]
     k = ease(lt / 1.4); h = h0 + (h1 - h0) * k
-    dim = 1.0 - 0.5 * (h / 72)
+    dim = max(0.35, 1.0 - v.get("dim_rate", 0.0) * h)
     cam = v.get("camera")
     cy = H * 0.52
     if cam == "crane_up": cy = H * 1.2 * (1 - ease(lt / 1.6)) + H * 0.52 * ease(lt / 1.6)
     x, y, c = organ_pts(v.get("organ", "brain"), t, 300, W * 0.72, cy, spin=1.0 + h / 24, dim=dim)
     # flicker = microsleeps after hour 24
-    if h > 24 and (int(t * 7) % 9 == 0): c = c * 0.25
+    if v.get("flicker") and (int(t * 7) % 9 == 0): c = c * 0.25
     dx, dy, dc = dust(t, 1.0, dy=0)
     im = compose(t, [(dx, dy, dc, 1), (x, y, c, 2)]); d = ImageDraw.Draw(im)
     a = ease(lt / 0.4)
-    d.text((124, 150), "HOURS AWAKE", font=font(FBo, 34), fill=fade_col(YELLOW, a))
-    d.text((110, 190), clock_txt(h), font=font(FB, 230), fill=fade_col(WHITE, a))
+    d.text((124, 150), v.get("label", "HOURS AWAKE"), font=font(FBo, 34), fill=fade_col(YELLOW, a))
+    d.text((110, 190), f"DAY {int(round(h))}" if v.get("fmt") == "day" else clock_txt(h), font=font(FB, 230), fill=fade_col(WHITE, a))
     if v.get("fact"):
         b = ease((lt - 1.3) / 0.5)
         d.text((124, 470), v["fact"], font=font(FB, 64), fill=fade_col(YELLOW, b))
@@ -177,7 +177,7 @@ def sc_record(sc, t, lt):
     im = compose(t, [(dx, dy, dc, 1), (x, y, c, 2)]); d = ImageDraw.Draw(im)
     n = int(v["value"] * (1 - (1 - e) ** 3))
     a = ease(lt / 0.4)
-    d.text((W / 2, H * 0.42), f"{n:,}", font=font(FB, 260), fill=fade_col(YELLOW, a), anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
+    d.text((W / 2, H * 0.42), f"{n:,}", font=font(FB, 220 if n >= 1e8 else 260), fill=fade_col(YELLOW, a), anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
     d.text((W / 2, H * 0.42 + 175), v.get("label", ""), font=font(SERIF_IT, 70), fill=fade_col(WHITE, a), anchor="mm")
     if v.get("note"): d.text((W / 2, H * 0.42 + 255), v["note"], font=font(FM, 38), fill=fade_col(SOFT, ease((lt - 1.2) / 0.5)), anchor="mm")
     return im

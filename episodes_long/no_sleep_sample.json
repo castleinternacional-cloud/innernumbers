@@ -8,7 +8,7 @@
   {"say": "So what happens if you just... stop sleeping? Hour by hour. Counted.",
    "visual": {"type": "title", "organ": "brain", "kicker": "INNER NUMBERS · FULL EPISODE", "title": "WHAT IF YOU\nSTOP SLEEPING?", "sub": "hour by hour, counted."}},
   {"say": "Hour seventeen. You feel mostly fine. But your reaction time is now about as slow as someone with a blood alcohol level of zero point zero five percent.",
-   "visual": {"type": "clock", "organ": "brain", "from": 0, "hour": 17, "fact": "≈ 0.05% BLOOD ALCOHOL", "note": "that's how slow your reactions are now"}},
+   "visual": {"type": "clock", "organ": "brain", "from": 0, "hour": 17, "dim_rate": 0.007, "fact": "≈ 0.05% BLOOD ALCOHOL", "note": "that's how slow your reactions are now"}},
   {"say": "Keep going, and the line keeps climbing. By hour twenty four, you perform like someone at zero point one percent. That's over the legal driving limit in the United States.",
    "visual": {"type": "graph", "organ": "brain", "title": "AWAKE vs. DRUNK", "sub": "reaction time, compared to blood alcohol",
      "points": [[0, 0], [12, 0.01], [17, 0.05], [24, 0.10]], "xmax": 26, "ymax": 0.12,
@@ -16,7 +16,7 @@
      "ylabels": [[0, "0"], [0.04, "0.04%"], [0.08, "0.08%"], [0.12, "0.12%"]],
      "hlines": [[0.08, "US DRIVING LIMIT"]], "marks": [[17, 0.05, "17h"], [24, 0.10, "24h"]]}},
   {"say": "And that is only day one. Your brain starts shutting down for a few seconds at a time, without asking you.",
-   "visual": {"type": "clock", "organ": "brain", "from": 24, "hour": 36, "camera": "crane_up", "fact": "MICROSLEEPS", "note": "seconds of sleep you don't even notice"}},
+   "visual": {"type": "clock", "organ": "brain", "from": 24, "hour": 36, "dim_rate": 0.007, "flicker": true, "camera": "crane_up", "fact": "MICROSLEEPS", "note": "seconds of sleep you don't even notice"}},
   {"say": "The longest anyone has stayed awake in a recorded experiment? Two hundred and sixty four hours. Let's count every one of them.",
    "visual": {"type": "record", "organ": "brain", "value": 264, "label": "hours awake", "note": "Randy Gardner, 1963–64"}}
  ]

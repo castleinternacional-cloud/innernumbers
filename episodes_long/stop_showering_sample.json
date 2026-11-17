@@ -1,0 +1,23 @@
+{
+ "id": "long_stop_showering_sample",
+ "title": "What Happens to Your Body If You Stop Showering (Day by Day, Counted)",
+ "voice": "am_michael", "speed": 1.0, "seed": 8,
+ "scenes": [
+  {"say": "Every minute, about thirty thousand of your skin cells fall off. Normally, a shower washes them away. So what happens if you just... stop?",
+   "visual": {"type": "cold", "organ": "skin"}},
+  {"say": "No soap. No water. Day by day. Counted.",
+   "visual": {"type": "title", "organ": "skin", "kicker": "INNER NUMBERS · FULL EPISODE", "title": "WHAT IF YOU\nSTOP SHOWERING?", "sub": "day by day, counted."}},
+  {"say": "Day one. You look fine. But you've already shed more than forty million skin cells. And the bacteria on your skin just got a feast.",
+   "visual": {"type": "clock", "organ": "skin", "label": "DAYS WITHOUT A SHOWER", "fmt": "day", "from": 0, "hour": 1, "fact": "40,000,000+ SKIN CELLS", "note": "shed in a single day"}},
+  {"say": "And that number never stops. By the end of the first week, it's around three hundred million cells, mixing with oil and sweat.",
+   "visual": {"type": "graph", "organ": "skin", "title": "SKIN YOU'VE SHED", "sub": "dead skin cells, in millions",
+     "points": [[0, 0], [1, 43], [3, 130], [5, 216], [7, 302]], "xmax": 7.6, "ymax": 350,
+     "xlabels": [[0, "day 0"], [1, "1"], [2, "2"], [3, "3"], [4, "4"], [5, "5"], [6, "6"], [7, "7"]],
+     "ylabels": [[0, "0"], [100, "100M"], [200, "200M"], [300, "300M"]],
+     "marks": [[1, 43, "day 1"], [7, 302, "day 7"]]}},
+  {"say": "Here's the strange part. Your sweat barely smells at all. The smell comes from bacteria breaking it down. And by now, they're everywhere.",
+   "visual": {"type": "clock", "organ": "skin", "label": "DAYS WITHOUT A SHOWER", "fmt": "day", "from": 1, "hour": 3, "camera": "crane_up", "fact": "SWEAT ≠ SMELL", "note": "the odor is made by bacteria"}},
+  {"say": "And after a month? You'll have shed about one point three billion skin cells. Let's count what happens to every one of them.",
+   "visual": {"type": "record", "organ": "skin", "value": 1300000000, "label": "skin cells in 30 days", "note": "≈ 30,000 per minute × 60 × 24 × 30"}}
+ ]
+}
