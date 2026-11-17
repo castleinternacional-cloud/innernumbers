@@ -29,3 +29,9 @@ ep001 heartbeats · ep002 blinking · ep003 breathing · ep004 red blood cells �
 - `publish/schedule.json` on `main` = the week to publish: `{"week": "...", "posts": [{"ep","dueAt" (UTC, 17:00Z = 12:00 Bogota),"video","title","text","text_youtube","text_tiktok","text_instagram"}]}`.
 - n8n workflow "Inner Numbers – Publicar semana en Buffer" (n8n-n8n.ml7ihy.easypanel.host, active) runs every Sunday 18:00 Bogota: reads schedule.json, skips past dates, creates one Buffer post per channel (YouTube, TikTok, Instagram — Buffer free plan, 3 channels, 10 queued per channel). Running it twice duplicates posts.
 - Only update schedule.json after Mathias approves the week's videos.
+
+## Camera moves (opt-in, per scene)
+In any `episodes_v2/*.json` scene, add to `visual`:
+- `"camera": "pull_back" | "push_in" | "crane_up"` — camera move during that scene only.
+- `"hud": true` — REC viewfinder (corners, blinking REC, timecode) during that scene only.
+Scenes without these fields render exactly as before. Use them only at key moments (hook, big reveal). Full demo: `engine/camera_demo.py`.

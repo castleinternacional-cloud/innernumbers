@@ -218,6 +218,27 @@ def sc_end(sc, t, lt):
 SCENES = {"heart3d": sc_heart, "counter": sc_counter, "linegraph": sc_linegraph, "bars": sc_bars,
           "cutaway": sc_cutaway, "tubs": sc_tubs, "end": sc_end}
 
+# ------------------------------------------------------------------ optional camera moves + viewfinder (opt-in per scene)
+# scene["visual"]["camera"]: "pull_back" | "push_in" | "crane_up"   scene["visual"]["hud"]: true -> REC viewfinder
+CAM_C = np.array([W / 2, H * 0.47])
+def apply_camera(sc, tg, lt):
+    cam = sc["visual"].get("camera")
+    if not cam: return tg
+    e = ease(lt / max(0.6, min(1.8, sc["_dur"] * 0.7)))
+    if cam == "pull_back": return CAM_C + (tg - CAM_C) * (2.8 * (1 - e) + e)
+    if cam == "push_in": return CAM_C + (tg - CAM_C) * (1 + 0.35 * e)
+    if cam == "crane_up": return tg + np.array([0, H * 0.6 * (1 - e)])
+    return tg
+
+def viewfinder(d, t, L=60, m=60, w=5):
+    col = (235, 235, 245)
+    for (x, y, sx, sy) in [(m, m + 60, 1, 1), (W - m, m + 60, -1, 1), (m, H - m - 140, 1, -1), (W - m, H - m - 140, -1, -1)]:
+        d.line([(x, y), (x + sx * L, y)], fill=col, width=w); d.line([(x, y), (x, y + sy * L)], fill=col, width=w)
+    yb = H - m - 190
+    if int(t * 2) % 2 == 0: d.ellipse([W - m - 140, yb - 11, W - m - 118, yb + 11], fill=(255, 60, 70))
+    d.text((W - m - 108, yb), "REC", font=font(FBo, 30), fill=(240, 240, 250), anchor="lm")
+    d.text((m + 30, yb), f"00:00:{int(t):02d}:{int(t * 24) % 24:02d}", font=font(FM, 28), fill=(210, 210, 225), anchor="lm")
+
 def captions(d, t, wt):
     i = next((k for k, w in enumerate(wt) if w[0] <= t < w[1]), None)
     if i is None: return
@@ -348,6 +369,7 @@ def main(ep_path, outdir):
         sc = scenes[si]; lt = t - sc["_t0"]
         fn = SCENES[sc["visual"]["type"]]
         tg, col, ov = fn(sc, t, lt, None) if fn is sc_bars else fn(sc, t, lt)
+        tg = apply_camera(sc, tg, lt)
         act = np.clip(lt * 2.5 - PH * 0.7, 0, 1)[:, None]
         vel = vel * 0.72 + (tg - pos) * 0.16 * act
         pos = pos + vel
@@ -356,6 +378,7 @@ def main(ep_path, outdir):
         img = bg0 + bokeh_layer(t, (90, 40, 160)) * 0.7 + layer + glow(layer, 18, gain=2.0)
         im = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)); d = ImageDraw.Draw(im)
         if ov: ov(d)
+        if sc["visual"].get("hud"): viewfinder(d, t)
         if CAP_STYLE[0] == "a": captions(d, t, wt)
         else: captions_v2(d, im, t, ch); d = ImageDraw.Draw(im)
         d.text((W / 2, H - 110), "INNER NUMBERS", font=font(FBo, 32), fill=(170, 175, 200), anchor="mm")
