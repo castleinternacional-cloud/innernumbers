@@ -1,0 +1,556 @@
+{
+ "id": "long_stop_showering",
+ "title": "What Happens to Your Body If You Stop Showering (Day by Day, Counted)",
+ "voice": "am_michael",
+ "speed": 0.95,
+ "seed": 8,
+ "sources": [
+  "Skin shedding ~30,000-40,000 cells/min: BayCare, 11 amazing facts about your skin",
+  "Skin microbiome ~1,000 species; ~1 million bacteria per cm2: NHGRI 2009 (Grice et al., Science); Grice & Segre, Nat Rev Microbiol 2011 (PMC3279608)",
+  "Epidermis renews about every 4 weeks",
+  "2-4 million sweat glands; ~250,000 on the feet",
+  "Apocrine sweat + bacteria (Corynebacterium, Staphylococcus) = body odor; Brevibacterium linked to foot odor and used to ripen cheeses like Limburger",
+  "Malassezia yeast on scalp, linked to dandruff",
+  "Olfactory adaptation to constant smells",
+  "Dermatitis neglecta: buildup of dead skin, oil and dirt from neglected washing; clears with gentle washing",
+  "James Hamblin, 'Clean: The New Science of Skin' (2020): stopped regular showering ~5 years",
+  "Harvard Health (2019) 'Showering daily - is it necessary?'",
+  "Belly Button Biodiversity project, Hulcr et al. 2012 PLOS ONE: 2,368 bacterial species in 60 navels",
+  "Stratum corneum ~15-20 layers of corneocytes",
+  "Dust mites feed on shed human skin flakes",
+  "ISS has no shower; astronauts use wet towels, no-rinse soap/shampoo; Scott Kelly 340 days (2015-2016)",
+  "Daily showering became common in the 20th century with home hot running water",
+  "Hair grows ~1 cm/month; ~100,000 scalp hairs, each with a sebaceous gland",
+  "Skin bacteria persist in follicles/pores after washing",
+  "Kwok et al. 2015 (Am J Infect Control): ~23 face touches per hour"
+ ],
+ "scenes": [
+  {
+   "say": "Every minute, about thirty thousand of your skin cells fall off your body. You don't feel it. You don't see it. And normally, a shower washes them away.",
+   "visual": {
+    "type": "cold",
+    "organ": "skin"
+   }
+  },
+  {
+   "say": "So what happens if you just stop? No soap. No water. Not for a day, not for a week. For a whole month. Let's find out, day by day. Counted.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "INNER NUMBERS · FULL EPISODE",
+    "title": "WHAT IF YOU\nSTOP SHOWERING?",
+    "sub": "day by day, counted."
+   }
+  },
+  {
+   "say": "First, a quick reality check. For most of human history, nobody showered every day. Daily showers only became normal in the last hundred years or so, once hot running water showed up in ordinary homes. So your body was not designed around a morning shower. It was designed to handle itself.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "A QUICK REALITY CHECK",
+    "title": "DAILY SHOWERS\nARE NEW.",
+    "sub": "about a hundred years new."
+   }
+  },
+  {
+   "say": "So what does a shower actually do? Water alone can't remove oil, because oil and water don't mix. That's where soap comes in. A soap molecule has two ends. One end grabs water. The other end grabs oil. Millions of them wrap around the oil on your skin, trap it in tiny bubbles, and the water carries it down the drain, along with dead skin and a lot of bacteria.",
+   "visual": {
+    "type": "stats",
+    "organ": "skin",
+    "title": "WHAT SOAP DOES",
+    "rows": [
+     [
+      "2 ENDS",
+      "one grabs water, one grabs oil"
+     ],
+     [
+      "MILLIONS",
+      "of molecules trapping oil"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And what is it washing off? The very top of your skin is a layer of dead, flattened cells, stacked roughly fifteen to twenty layers deep. Think of it like a brick wall that's always being rebuilt from the bottom, while the top bricks crumble away. Every shower knocks off some of those bricks. Stop showering, and the crumbling bricks just pile up.",
+   "visual": {
+    "type": "stats",
+    "organ": "skin",
+    "title": "YOUR SKIN'S TOP LAYER",
+    "rows": [
+     [
+      "15-20",
+      "layers of dead, flat cells"
+     ],
+     [
+      "24/7",
+      "rebuilt from below"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Before we start, you need to know who lives on you. Your skin is home to up to a thousand different species of bacteria. A single square centimeter can hold around a million of them.",
+   "visual": {
+    "type": "stats",
+    "organ": "bacteria",
+    "title": "WHO LIVES ON YOUR SKIN",
+    "rows": [
+     [
+      "1,000",
+      "species of bacteria, roughly"
+     ],
+     [
+      "1,000,000",
+      "bacteria on one square centimeter"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Most of them are harmless. Many actually protect you. They eat what your body leaves behind: dead skin, oil, and sweat. And when you stop showering, you are about to throw them a party.",
+   "visual": {
+    "type": "title",
+    "organ": "bacteria",
+    "kicker": "MEET YOUR ROOMMATES",
+    "title": "MOSTLY\nHARMLESS.",
+    "sub": "and very, very hungry."
+   }
+  },
+  {
+   "say": "Day one. Honestly, you look fine. You probably feel fine too. But under the surface, the count has already started. In twenty four hours, you've shed more than forty million skin cells.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 0,
+    "hour": 1,
+    "fact": "40,000,000+ SKIN CELLS",
+    "note": "shed in a single day"
+   }
+  },
+  {
+   "say": "At the same time, millions of tiny glands keep working. Your skin makes oil, called sebum, to keep itself soft and waterproof. Normally, soap strips most of it away every day. Now it just stays there, and slowly builds up.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 1,
+    "hour": 1,
+    "fact": "OIL + DEAD SKIN",
+    "note": "nothing is washing it away"
+   }
+  },
+  {
+   "say": "Day two. The first place you notice it is your hair. Your scalp is one of the oiliest parts of your body, so by now your hair looks flat and shiny. And a yeast called Malassezia, which lives on almost everyone's scalp, starts feeding on that oil. In some people, that's what leads to itching and flakes.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 1,
+    "hour": 2,
+    "fact": "SCALP OIL",
+    "note": "and a yeast that loves it"
+   }
+  },
+  {
+   "say": "Day three. This is the day people around you start to notice. But here's the strange part. Your sweat barely smells at all. It's mostly water and salt.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 2,
+    "hour": 3,
+    "camera": "crane_up",
+    "fact": "SWEAT ≠ SMELL",
+    "note": "fresh sweat is almost odorless"
+   }
+  },
+  {
+   "say": "You have between two and four million sweat glands. But a special kind, in your armpits and groin, makes a thicker sweat, full of fats and proteins. Bacteria break that sweat down, and what they leave behind is the smell. So body odor isn't really you. It's them.",
+   "visual": {
+    "type": "stats",
+    "organ": "bacteria",
+    "title": "WHERE THE SMELL COMES FROM",
+    "rows": [
+     [
+      "2-4 MILLION",
+      "sweat glands on your body"
+     ],
+     [
+      "BACTERIA",
+      "make the odor, not your sweat"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Day four. Look in the mirror, and your face is shiny, especially across your forehead and nose. That area is packed with oil glands, more than almost anywhere else on your body. Oil, dead cells, and bacteria can start to block your pores. For some people, that means the first spots. For others, nothing much changes at all. Skin is surprisingly different from person to person.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 3,
+    "hour": 4,
+    "fact": "THE T-ZONE",
+    "note": "forehead and nose: oil central"
+   }
+  },
+  {
+   "say": "Day five. Now it's your feet. Each foot has more than a hundred thousand sweat glands, packed into socks and shoes. Warm, wet, and dark. A perfect home. One of the bacteria that grows there is a close relative of the bacteria used to ripen some of the smelliest cheeses in the world.",
+   "visual": {
+    "type": "clock",
+    "organ": "bacteria",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 3,
+    "hour": 5,
+    "fact": "250,000 SWEAT GLANDS",
+    "note": "on your two feet alone"
+   }
+  },
+  {
+   "say": "So yes. After five days, your feet and a stinky cheese have something in common.",
+   "visual": {
+    "type": "title",
+    "organ": "bacteria",
+    "kicker": "FUN FACT",
+    "title": "FEET =\nCHEESE?",
+    "sub": "same family of bacteria."
+   }
+  },
+  {
+   "say": "Day six. Let's talk about a place most people forget to wash even when they do shower: your belly button. Scientists in North Carolina once swabbed the belly buttons of sixty people. They found about two thousand three hundred different kinds of bacteria. Many of them had never been described by science before.",
+   "visual": {
+    "type": "clock",
+    "organ": "bacteria",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 5,
+    "hour": 6,
+    "fact": "2,368 TYPES OF BACTERIA",
+    "note": "found in just 60 belly buttons"
+   }
+  },
+  {
+   "say": "Your belly button is like a tiny rainforest. Dark, warm, and almost never disturbed. Without showers, that rainforest gets a lot more crowded.",
+   "visual": {
+    "type": "title",
+    "organ": "bacteria",
+    "kicker": "BELLY BUTTON BIODIVERSITY",
+    "title": "A TINY\nRAINFOREST.",
+    "sub": "right in the middle of you."
+   }
+  },
+  {
+   "say": "Day seven. One full week. Let's check the count. You've now shed around three hundred million skin cells. Some fall off. But a lot of them stay stuck to your skin, mixed with oil and sweat.",
+   "visual": {
+    "type": "graph",
+    "organ": "skin",
+    "title": "SKIN YOU'VE SHED",
+    "sub": "dead skin cells, in millions",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      43
+     ],
+     [
+      3,
+      130
+     ],
+     [
+      5,
+      216
+     ],
+     [
+      7,
+      302
+     ]
+    ],
+    "xmax": 7.6,
+    "ymax": 350,
+    "xlabels": [
+     [
+      0,
+      "day 0"
+     ],
+     [
+      1,
+      "1"
+     ],
+     [
+      2,
+      "2"
+     ],
+     [
+      3,
+      "3"
+     ],
+     [
+      4,
+      "4"
+     ],
+     [
+      5,
+      "5"
+     ],
+     [
+      6,
+      "6"
+     ],
+     [
+      7,
+      "7"
+     ]
+    ],
+    "ylabels": [
+     [
+      0,
+      "0"
+     ],
+     [
+      100,
+      "100M"
+     ],
+     [
+      200,
+      "200M"
+     ],
+     [
+      300,
+      "300M"
+     ]
+    ],
+    "marks": [
+     [
+      1,
+      43,
+      "day 1"
+     ],
+     [
+      7,
+      302,
+      "day 7"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And here's the twist. You probably can't smell yourself anymore. Your brain is built to ignore smells that never change. It's called olfactory adaptation. Everyone else can smell you. You can't.",
+   "visual": {
+    "type": "clock",
+    "organ": "brain",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 5,
+    "hour": 7,
+    "fact": "NOSE BLIND",
+    "note": "your brain tunes out your own smell"
+   }
+  },
+  {
+   "say": "Day ten. Now think about your bed. Every night, you leave skin flakes, oil, and sweat on your sheets. Normally, that's a problem you solve with laundry. But your body is now shedding into the same bed, night after night, with nothing washed off first.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 7,
+    "hour": 10,
+    "fact": "EVERY NIGHT",
+    "note": "skin, oil and sweat on your sheets"
+   }
+  },
+  {
+   "say": "And something is waiting for it. Dust mites. Tiny animals, too small to see, that live in beds, pillows, and carpets, and feed on the skin flakes humans leave behind. For a dust mite, someone who stops showering is an all you can eat buffet.",
+   "visual": {
+    "type": "title",
+    "organ": "bacteria",
+    "kicker": "WHO EATS YOUR SKIN?",
+    "title": "DUST\nMITES.",
+    "sub": "an all-you-can-eat buffet."
+   }
+  },
+  {
+   "say": "Day fourteen. Two weeks in. Your skin is still renewing itself, pushing new cells up from below. But on top, the old ones are piling up. In places that are hard to reach, like your back or behind your ears, the skin can start to look darker and rougher.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 7,
+    "hour": 14,
+    "dim_rate": 0.012,
+    "fact": "BUILDUP",
+    "note": "old cells, oil and dirt, layer on layer"
+   }
+  },
+  {
+   "say": "If it keeps going for weeks, doctors even have a name for it: dermatitis neglecta. Patches of crusty, brown skin made of dead cells, oil, and dirt. The good news? It usually comes right off with gentle washing. Your skin underneath is fine.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "THE MEDICAL NAME",
+    "title": "DERMATITIS\nNEGLECTA",
+    "sub": "it washes off. really."
+   }
+  },
+  {
+   "say": "Now, some people go without a shower for months, and not by choice. Astronauts. The International Space Station has no shower at all. In zero gravity, water doesn't fall. It floats around in blobs and sticks to everything.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "THE REAL NO-SHOWER CLUB",
+    "title": "ASTRONAUTS.",
+    "sub": "the space station has no shower."
+   }
+  },
+  {
+   "say": "So astronauts clean themselves with wet towels, no rinse soap, and no rinse shampoo, and their water is recycled again and again. Astronaut Scott Kelly spent three hundred and forty days in a row on the station. Almost a full year without a real shower. And his skin was fine.",
+   "visual": {
+    "type": "record",
+    "organ": "skin",
+    "value": 340,
+    "label": "days in space, no shower",
+    "note": "Scott Kelly, ISS, 2015-2016"
+   }
+  },
+  {
+   "say": "Day twenty one. Three weeks. Your hair has grown about a centimeter since you started. You have around a hundred thousand hairs on your head, and every single one has its own little oil gland attached. That's a hundred thousand tiny oil taps, running day and night, with nothing turning them off.",
+   "visual": {
+    "type": "clock",
+    "organ": "skin",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 14,
+    "hour": 21,
+    "fact": "100,000 OIL TAPS",
+    "note": "one gland for every hair on your head"
+   }
+  },
+  {
+   "say": "Day thirty. One month. Your skin has renewed itself about once. Almost every cell on your surface is new. And you've shed around one point three billion skin cells.",
+   "visual": {
+    "type": "record",
+    "organ": "skin",
+    "value": 1300000000,
+    "label": "skin cells in 30 days",
+    "note": "≈ 30,000 per minute × 60 × 24 × 30"
+   }
+  },
+  {
+   "say": "But something else happens too, and this is the part nobody expects. Your bacteria start to settle down. Without soap wiping them out every morning, the community on your skin slowly finds a new balance.",
+   "visual": {
+    "type": "clock",
+    "organ": "bacteria",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 14,
+    "hour": 30,
+    "fact": "A NEW BALANCE",
+    "note": "your skin's ecosystem adjusts"
+   }
+  },
+  {
+   "say": "And when you finally do shower again? The buildup comes off, the smell goes down the drain, and the skin underneath is usually just fine. But your bacteria don't disappear. Many of them hide deep in your pores and hair follicles, where soap can't reach. Within hours, they start spreading back out. You can wash them off. You can't wash them away.",
+   "visual": {
+    "type": "clock",
+    "organ": "bacteria",
+    "label": "DAYS WITHOUT A SHOWER",
+    "fmt": "day",
+    "from": 30,
+    "hour": 31,
+    "fact": "THE FIRST SHOWER",
+    "note": "bacteria hide in pores and come back"
+   }
+  },
+  {
+   "say": "One doctor actually tested this on himself. James Hamblin, a physician and writer, stopped showering regularly for about five years. In his book, Clean, he says that after the first few weeks, he stopped smelling like body odor. He just smelled, in his words, like a person.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "THE REAL EXPERIMENT",
+    "title": "5 YEARS\nNO SHOWERS",
+    "sub": "James Hamblin, \"Clean\" (2020)"
+   }
+  },
+  {
+   "say": "Now, that's one person. Not a study. And he still washed his hands, which you should always do, because hands are how germs travel.",
+   "visual": {
+    "type": "stats",
+    "organ": "skin",
+    "title": "BEFORE YOU TRY THIS",
+    "rows": [
+     [
+      "1",
+      "person, not a study"
+     ],
+     [
+      "ALWAYS",
+      "wash your hands"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Here's why hands are different. In one study, people touched their own face about twenty three times an hour, without noticing. Eyes, nose, mouth. That's how germs get in. So skipping a shower is mostly about smell. Skipping handwashing is about getting sick.",
+   "visual": {
+    "type": "record",
+    "organ": "bacteria",
+    "value": 23,
+    "label": "face touches per hour",
+    "note": "Kwok et al., 2015 · that's why you wash your hands"
+   }
+  },
+  {
+   "say": "So, do you need to shower every single day? Many dermatologists say probably not. For a lot of people, a few times a week is enough, unless you're sweaty or dirty. Too much hot water and soap can dry out your skin and strip away the oils and bacteria that protect it.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "SO... DO YOU NEED IT?",
+    "title": "EVERY DAY?\nMAYBE NOT.",
+    "sub": "but please, wash your hands."
+   }
+  },
+  {
+   "say": "Let's count it all up. In one month without a shower: about one point three billion skin cells shed. A million bacteria on every square centimeter of you. Up to four million sweat glands working the whole time. And one brain that politely pretends you smell fine.",
+   "visual": {
+    "type": "stats",
+    "organ": "skin",
+    "title": "ONE MONTH, COUNTED",
+    "rows": [
+     [
+      "1.3 BILLION",
+      "skin cells shed"
+     ],
+     [
+      "1 MILLION",
+      "bacteria per square centimeter"
+     ],
+     [
+      "4 MILLION",
+      "sweat glands, max"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Your body is always counting, even when you're not. If you want more of it, counted, subscribe to Inner Numbers. And maybe, go take a shower.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "INNER NUMBERS",
+    "title": "YOUR BODY,\nCOUNTED.",
+    "sub": "subscribe for the next episode."
+   }
+  }
+ ]
+}

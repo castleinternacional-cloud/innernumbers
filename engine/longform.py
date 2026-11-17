@@ -182,7 +182,24 @@ def sc_record(sc, t, lt):
     if v.get("note"): d.text((W / 2, H * 0.42 + 255), v["note"], font=font(FM, 38), fill=fade_col(SOFT, ease((lt - 1.2) / 0.5)), anchor="mm")
     return im
 
-SCENES = {"cold": sc_cold, "title": sc_title, "clock": sc_clock, "graph": sc_graph, "record": sc_record}
+def sc_stats(sc, t, lt):
+    """Up to 3 rows: big yellow number + serif label, revealed one by one."""
+    v = sc["visual"]
+    x, y, c = organ_pts(v.get("organ", "skin"), t, 260, W * 0.78, H * 0.52, dim=0.7)
+    dx, dy, dc = dust(t)
+    im = compose(t, [(dx, dy, dc, 1), (x, y, c, 2)]); d = ImageDraw.Draw(im)
+    a0 = ease(lt / 0.4)
+    if v.get("title"): d.text((124, 130), v["title"], font=font(FBo, 38), fill=fade_col(YELLOW, a0))
+    rows = v["rows"]; step = max(1.0, sc["_dur"] * 0.8 / len(rows))
+    for i, (num, lab) in enumerate(rows):
+        a = ease((lt - 0.3 - i * step) / 0.5)
+        if a <= 0: continue
+        yb = 200 + i * 262
+        d.text((118, yb), num, font=font(FB, 140), fill=fade_col(WHITE, a))
+        d.text((126, yb + 150), lab, font=font(SERIF_IT, 48), fill=fade_col((230, 225, 240), a))
+    return im
+
+SCENES = {"cold": sc_cold, "title": sc_title, "clock": sc_clock, "graph": sc_graph, "record": sc_record, "stats": sc_stats}
 
 # ------------------------------------------------------------------ subtitles (sentence by sentence, bottom)
 def subtitle(d, sc, lt):

@@ -218,7 +218,30 @@ class Brain(Organ):
         mid = np.abs(x) < 0.025; c[mid] = np.array([30, 20, 60.])
         return c
 
-REGISTRY = {"heart": Heart, "eye": Eye, "lungs": Lungs, "rbc": RBC, "skin": Skin, "bone": Bone, "brain": Brain}
+# ------------------------------------------------------------------ bacteria colony (rods + cocci)
+class Bacteria(Organ):
+    name = "bacteria"; pal = ((120, 255, 170), (40, 220, 200), (60, 140, 255)); view_tilt = 0.3
+    def build(self, rng):
+        pts_s, pts_v = [], []
+        k = 46; ns_each = NS // k; nv_each = (N - NS) // k
+        for i in range(k):
+            c = rng.normal(0, 0.62, 3); c[1] *= 0.6
+            d = rng.normal(size=3); d /= np.linalg.norm(d)
+            rod = i % 3 != 0
+            L = rng.uniform(0.18, 0.32) if rod else 0.0; r = rng.uniform(0.06, 0.09)
+            def sample(n, surf):
+                u = rng.uniform(-1, 1, n)[:, None] * L / 2
+                q = rng.normal(size=(n, 3)); q /= np.linalg.norm(q, axis=1, keepdims=True)
+                rr = r if surf else r * rng.uniform(0, 1, (n, 1)) ** (1 / 3)
+                return c + u * d + q * rr
+            pts_s.append(sample(ns_each, True)); pts_v.append(sample(nv_each, False))
+        s = np.concatenate(pts_s); v = np.concatenate(pts_v)
+        s = np.concatenate([s, s[: NS - len(s)]]) if len(s) < NS else s[:NS]
+        v = np.concatenate([v, v[: (N - NS) - len(v)]]) if len(v) < N - NS else v[: N - NS]
+        return s, v
+    def pulse(self, t): return 1.0 + 0.02 * math.sin(t * 2.0)
+
+REGISTRY = {"heart": Heart, "eye": Eye, "lungs": Lungs, "rbc": RBC, "skin": Skin, "bone": Bone, "brain": Brain, "bacteria": Bacteria}
 _cache = {}
 def get(name, seed=7):
     if name not in _cache: _cache[name] = REGISTRY[name](np.random.default_rng(seed + hash(name) % 97))
