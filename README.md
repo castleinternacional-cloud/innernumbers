@@ -33,5 +33,4 @@ ep001 heartbeats · ep002 blinking · ep003 breathing · ep004 red blood cells �
 ## Camera moves (opt-in, per scene)
 In any `episodes_v2/*.json` scene, add to `visual`:
 - `"camera": "pull_back" | "push_in" | "crane_up"` — camera move during that scene only.
-- `"hud": true` — REC viewfinder (corners, blinking REC, timecode) during that scene only.
 Scenes without these fields render exactly as before. Use them only at key moments (hook, big reveal). Full demo: `engine/camera_demo.py`.
