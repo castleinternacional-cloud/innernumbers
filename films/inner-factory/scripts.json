@@ -1,0 +1,16 @@
+{
+ "voice_id": "GQQpeRnV5mCWTgxKhGo5",
+ "voice_name": "Ryan - American Documentary Narrator (ElevenLabs)",
+ "episodes": [
+  {"id": "e1_mucus", "title": "The Mucus Escalator",
+   "text": "This is snot. Not from your nose... from deep inside your lungs. Every day you breathe about eleven thousand liters of air, full of dust and germs. So your airways make sticky mucus, a flypaper that traps them. Then comes the escalator. Each cell has about two hundred tiny hairs, beating up to twenty times a second, pushing the dirty mucus up to your throat. And then? You swallow it. Stomach acid finishes the job. You're doing it right now."},
+  {"id": "e2_redcell", "title": "120 Days",
+   "text": "You are a red blood cell, and you have one hundred and twenty days. You're born in the bone marrow, one of about two million made every second. Your job: drop off oxygen, pick up carbon dioxide, again and again. But by day one twenty, you're stiff. And the spleen runs an inspection. Young, bendy cells squeeze through. Old ones? Stopped. Taken apart. And your iron goes straight back to the marrow... to build the next you."},
+  {"id": "e3_knuckles", "title": "Why Knuckles Crack",
+   "text": "Why do your knuckles crack? Inside every finger joint is a sealed capsule full of slippery fluid. Pull the joint apart, the pressure drops, and gas comes out of the fluid as a bubble. Pop. That's the sound. Then it needs about twenty minutes to reset before it can crack again. Does it cause arthritis? One doctor cracked the knuckles of only one hand for more than sixty years. Neither hand got arthritis. If it hurts, though, see a doctor."},
+  {"id": "e4_sweat", "title": "The Sweat of Humanity",
+   "text": "What if we collected the sweat of everyone on Earth? Your skin has around two million sweat glands. Even sitting still, it lets out at least half a liter of water a day. That's about one hundred and eighty liters a year, per person. Now multiply by eight point two billion people. One and a half trillion liters, every year. Enough to fill six hundred thousand Olympic swimming pools. Tag someone who's adding extra right now."},
+  {"id": "e5_bones", "title": "Your Bones Sound the Alarm",
+   "text": "Your bones might be the reason you run from danger. For decades the story was simple: you see a threat, your adrenal glands pump adrenaline, and you fight or flee. But in twenty nineteen, scientists found something strange. Rodents without adrenal glands still reacted to danger. So did people whose adrenal glands don't work. The missing piece? Bone. Under stress, bone cells release a hormone called osteocalcin, and it takes the brakes off fight or flight. Your skeleton isn't just a frame. It's an alarm."}
+ ]
+}

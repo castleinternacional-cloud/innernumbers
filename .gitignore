@@ -3,3 +3,4 @@ out/
 __pycache__/
 *.pyc
 render_week.sh
+films/*/stills/
