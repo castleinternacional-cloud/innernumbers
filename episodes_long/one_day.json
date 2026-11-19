@@ -1,0 +1,770 @@
+{
+ "id": "long_one_day",
+ "title": "Every Number Your Body Hits in One Day",
+ "voice": "am_michael",
+ "speed": 0.95,
+ "seed": 12,
+ "hud_from_scene": 3,
+ "hud_rate": 3800000,
+ "intro_chapter": "330 billion new cells, today",
+ "sources": [
+  "~330 billion cells replaced per day (≈3.8 million/s, our arithmetic): Sender & Milo, Nature Medicine 2021 — https://wis-wander.weizmann.ac.il/node/11205",
+  "~60,000 miles of blood vessels; heart circulates ~2,000 gallons (7,500+ L) a day: Cleveland Clinic — https://my.clevelandclinic.org/health/body/21640-blood-vessels ; https://my.clevelandclinic.org/health/body/circulatory-and-cardiovascular-system",
+  "Earth's equatorial circumference ~24,901 miles (NASA); 60,000 / 24,901 ≈ 2.4",
+  "~100,000 beats/day = our arithmetic at 70 beats/min (70 × 60 × 24 = 100,800)",
+  "17,000+ breaths/day, 12–15/min; 2,000+ gallons of air/day; ~1,500 miles of airways; right lung 3 lobes, left 2: American Lung Association — https://www.lung.org/blog/how-your-lungs-work ; Cleveland Clinic — https://my.clevelandclinic.org/health/body/8960-lungs",
+  "10 kg of fat oxidised → 8.4 kg exhaled as CO2, 1.6 kg water: Meerman & Brown, BMJ 2014;349:g7257 — https://www.sciencedaily.com/releases/2014/12/141216212041.htm",
+  "Kidneys filter ~150 quarts of blood/day, 1–2 quarts become urine, ~1 million nephrons per kidney: NIDDK — https://niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+  "Red blood cells live ~120 days: Cleveland Clinic (erythropoiesis)",
+  "Brain ~86 billion neurons, ~3 lb: Cleveland Clinic — https://my.clevelandclinic.org/health/body/22638-brain",
+  "Fastest nerve signals 70–120 m/s (~156–270 mph): Tim Welsh, University of Toronto, via EarthSky — https://earthsky.org/human-world/what-is-the-speed-of-thought/",
+  "Blinks 14–17/min, ~13,440–16,320 a waking day: Cleveland Clinic — https://my.clevelandclinic.org/health/articles/blinking",
+  "Normal to shed 50–100 hairs a day: American Academy of Dermatology — https://www.aad.org/public/diseases/hair-loss/insider/shedding",
+  "Fingernails 3.47 mm/month, toenails 1.62 mm/month: Yaemsiri et al., J Eur Acad Dermatol Venereol 2010 — https://pubmed.ncbi.nlm.nih.gov/19744178/",
+  "Up to 2 cm taller in the morning: University of Manchester (Dudek et al., Ann Rheum Dis 2016) — https://www.manchester.ac.uk/discover/news/back-pain-link-to-24-hour-body-clock-revealed/",
+  "Babies born with ~270 bones; adults 206–213: Cleveland Clinic — https://my.clevelandclinic.org/health/body/25176-bones",
+  "Most of the adult skeleton replaced about every 10 years: U.S. Surgeon General, Bone Health and Osteoporosis (2004) — https://www.ncbi.nlm.nih.gov/books/NBK45504/"
+ ],
+ "scenes": [
+  {
+   "say": "Today, your body will build about three hundred and thirty billion brand new cells. That's almost four million every second. Including the second you just heard.",
+   "visual": {
+    "type": "cold",
+    "organ": "rbc"
+   }
+  },
+  {
+   "say": "Since this video started, millions of your cells have already died, and been replaced. And that's just one of the numbers your body hits today.",
+   "visual": {
+    "type": "ticker",
+    "organ": "rbc",
+    "rate": 3800000,
+    "global": true,
+    "label": "new cells since you pressed play",
+    "note": "≈ 3.8 million per second",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "So let's follow one ordinary day, from midnight to midnight, and count everything. Six chapters. One clock. And at the end, one number that changes how you see yourself.",
+   "visual": {
+    "type": "title",
+    "organ": "heart",
+    "kicker": "INNER NUMBERS · FULL EPISODE",
+    "title": "ONE DAY\nIN YOUR BODY",
+    "sub": "every number, counted."
+   }
+  },
+  {
+   "chapter": "The pump: 100,000 heartbeats",
+   "say": "Chapter one. Midnight. You're asleep, and the hardest working muscle you own is just getting started.",
+   "visual": {
+    "type": "dial",
+    "organ": "heart",
+    "from": 20,
+    "hour": 24,
+    "kicker": "CHAPTER 1",
+    "name": "the pump",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "At about seventy beats a minute, your heart will beat around one hundred thousand times before tonight. No breaks. No days off.",
+   "visual": {
+    "type": "record",
+    "organ": "heart",
+    "value": 100800,
+    "label": "heartbeats in one day",
+    "note": "at 70 beats a minute × 60 × 24"
+   }
+  },
+  {
+   "say": "And every one of those beats moves blood. Altogether, your heart pushes around seventy five hundred liters through your body in a single day. That's about two thousand gallons.",
+   "visual": {
+    "type": "stats",
+    "organ": "heart",
+    "title": "EVERY SINGLE DAY",
+    "rows": [
+     [
+      "7,500 L",
+      "of blood moved, about 2,000 gallons"
+     ],
+     [
+      "24 H",
+      "no rest, ever"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "But here's the question nobody asks. Where does all that blood actually go? Because it needs roads. A lot of roads.",
+   "visual": {
+    "type": "title",
+    "organ": "heart",
+    "kicker": "BUT WHERE DOES IT GO?",
+    "title": "THE ROAD\nNETWORK.",
+    "sub": "hidden inside you.",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "If you took every artery, vein and capillary in your body, and laid them end to end, they would stretch about sixty thousand miles. Enough to wrap around the Earth almost two and a half times. Inside one person. Inside you.",
+   "visual": {
+    "type": "earth",
+    "miles": 60000,
+    "laps": 2.4,
+    "note": "Earth's circumference ≈ 24,901 miles"
+   }
+  },
+  {
+   "say": "And most of that length isn't the big pipes you can feel in your wrist or your neck. It's capillaries. Vessels so thin that red blood cells squeeze through them almost single file. That's where the real work happens: oxygen out, waste in.",
+   "visual": {
+    "type": "title",
+    "organ": "rbc",
+    "kicker": "THE TINY ROADS",
+    "title": "SINGLE\nFILE.",
+    "sub": "where the real work happens.",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "But all that blood would be useless without one thing. And you're doing it right now, every four or five seconds.",
+   "visual": {
+    "type": "title",
+    "organ": "lungs",
+    "kicker": "COMING UP",
+    "title": "BLOOD IS\nUSELESS...",
+    "sub": "without this."
+   }
+  },
+  {
+   "chapter": "The air: 17,000 breaths",
+   "say": "Chapter two. Six in the morning. You wake up, and take a breath you'll never remember.",
+   "visual": {
+    "type": "dial",
+    "organ": "lungs",
+    "from": 0,
+    "hour": 6,
+    "kicker": "CHAPTER 2",
+    "name": "the air"
+   }
+  },
+  {
+   "say": "The American Lung Association puts it at more than seventeen thousand breaths a day. That's over six million a year.",
+   "visual": {
+    "type": "record",
+    "organ": "lungs",
+    "value": 17000,
+    "label": "breaths in one day",
+    "note": "12 to 15 a minute · American Lung Association"
+   }
+  },
+  {
+   "say": "Every day, you pull in more than two thousand gallons of air. And it travels through about fifteen hundred miles of airways. Branches, inside branches, inside branches.",
+   "visual": {
+    "type": "stats",
+    "organ": "lungs",
+    "title": "WHAT GOES IN",
+    "rows": [
+     [
+      "2,000+ GAL",
+      "of air breathed in, every day"
+     ],
+     [
+      "1,500 MILES",
+      "of airways inside your lungs"
+     ]
+    ],
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "Spread out, the inside of your lungs covers roughly the area of a tennis court. And an adult man's lungs hold about six liters of air. All of that, folded into your chest.",
+   "visual": {
+    "type": "stats",
+    "organ": "lungs",
+    "title": "FOLDED INSIDE YOU",
+    "rows": [
+     [
+      "1 TENNIS COURT",
+      "of lung surface, roughly"
+     ],
+     [
+      "6 L",
+      "of air, an adult man's lungs"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And your two lungs are not twins. The right one has three lobes. The left one has only two. Why? Because it has to leave room for your heart.",
+   "visual": {
+    "type": "stats",
+    "organ": "lungs",
+    "title": "NOT TWINS",
+    "rows": [
+     [
+      "3 LOBES",
+      "your right lung"
+     ],
+     [
+      "2 LOBES",
+      "your left lung, making room for your heart"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "But here's the part that surprises most people. When you lose fat, where does it actually go?",
+   "visual": {
+    "type": "title",
+    "organ": "lungs",
+    "kicker": "THE WEIRD PART",
+    "title": "YOU BREATHE\nOUT FAT.",
+    "sub": "literally.",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "In twenty fourteen, scientists Ruben Meerman and Andrew Brown did the math. Burn ten kilos of fat, and eight point four kilos of it leaves through your lungs, as carbon dioxide. The rest becomes water.",
+   "visual": {
+    "type": "bars",
+    "organ": "lungs",
+    "title": "BURN 10 KG OF FAT",
+    "sub": "where it goes · Meerman & Brown, BMJ 2014",
+    "hi": 0,
+    "bars": [
+     [
+      "breathed out",
+      8.4,
+      "8.4 KG as CO₂"
+     ],
+     [
+      "water",
+      1.6,
+      "1.6 KG"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "So the main exit for fat isn't sweat, and it isn't the toilet. It's your breath. Every time you exhale, a little bit of what you ate is leaving as gas.",
+   "visual": {
+    "type": "title",
+    "organ": "lungs",
+    "kicker": "THE MAIN EXIT",
+    "title": "IT'S YOUR\nBREATH.",
+    "sub": "not sweat. not the toilet."
+   }
+  },
+  {
+   "say": "So your lungs handle the gas. But your blood also picks up waste all day long. And someone has to clean it.",
+   "visual": {
+    "type": "title",
+    "organ": "rbc",
+    "kicker": "COMING UP",
+    "title": "WHO CLEANS\nYOUR BLOOD?",
+    "sub": "it's not your heart."
+   }
+  },
+  {
+   "chapter": "The filter: 150 quarts of blood",
+   "say": "Chapter three. Ten in the morning. Just below your ribs, on either side of your spine, two organs about the size of a fist are hard at work. Your kidneys.",
+   "visual": {
+    "type": "dial",
+    "organ": "rbc",
+    "from": 6,
+    "hour": 10,
+    "kicker": "CHAPTER 3",
+    "name": "the filter"
+   }
+  },
+  {
+   "say": "In a single day, your kidneys filter about one hundred and fifty quarts of blood. That's roughly one hundred and forty liters.",
+   "visual": {
+    "type": "record",
+    "organ": "rbc",
+    "value": 150,
+    "label": "quarts of blood filtered a day",
+    "note": "≈ 142 liters · NIDDK",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "Quick question before we go on. Which moves more through you in a day: the air you breathe, or the blood your heart pumps? Think about it for a second.",
+   "visual": {
+    "type": "title",
+    "organ": "heart",
+    "kicker": "QUICK QUIZ",
+    "title": "AIR OR\nBLOOD?",
+    "sub": "which moves more in a day?"
+   }
+  },
+  {
+   "say": "Here's the answer: it's almost a tie. Put both next to the other numbers from today, and you can see the job. Thousands of liters of air and blood move through you. About a hundred and forty liters get filtered. And only one or two quarts leave as urine.",
+   "visual": {
+    "type": "bars",
+    "organ": "rbc",
+    "title": "ONE DAY, IN LITERS",
+    "sub": "linear scale, on purpose",
+    "hi": 2,
+    "bars": [
+     [
+      "air in",
+      7570,
+      "7,500+ L"
+     ],
+     [
+      "blood pumped",
+      7500,
+      "7,500 L"
+     ],
+     [
+      "blood filtered",
+      142,
+      "142 L"
+     ],
+     [
+      "urine",
+      1.5,
+      "1–2 L"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Do the math, and that means about ninety nine percent of what your kidneys filter goes straight back into your blood. They're not throwing water away. They're sorting it, over and over, all day.",
+   "visual": {
+    "type": "record",
+    "organ": "rbc",
+    "value": 99,
+    "label": "percent sent back into your blood",
+    "note": "150 quarts filtered, 1–2 quarts out"
+   }
+  },
+  {
+   "say": "How? Each kidney is packed with about a million tiny filtering units, called nephrons. A million in each one.",
+   "visual": {
+    "type": "stats",
+    "organ": "rbc",
+    "title": "HOW?",
+    "rows": [
+     [
+      "1,000,000",
+      "tiny filters in each kidney"
+     ],
+     [
+      "2",
+      "kidneys, working nonstop"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And the red blood cells passing through? Each one lives for about a hundred and twenty days. Then it's retired, and replaced. The blood in you right now is not the blood you had last summer.",
+   "visual": {
+    "type": "record",
+    "organ": "rbc",
+    "value": 120,
+    "label": "days a red blood cell lives",
+    "note": "Cleveland Clinic"
+   }
+  },
+  {
+   "say": "But none of this happens by itself. Every beat, every breath, every filter, is run by one organ that weighs about three pounds.",
+   "visual": {
+    "type": "title",
+    "organ": "brain",
+    "kicker": "COMING UP",
+    "title": "NOW, THE\nBOSS.",
+    "sub": "three pounds of it.",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "chapter": "The boss: 86 billion neurons",
+   "say": "Chapter four. Two in the afternoon. You're reading, talking, deciding. And your brain is running all of it.",
+   "visual": {
+    "type": "dial",
+    "organ": "brain",
+    "from": 10,
+    "hour": 14,
+    "kicker": "CHAPTER 4",
+    "name": "the boss"
+   }
+  },
+  {
+   "say": "Inside it are close to eighty six billion nerve cells. And they talk to each other with electricity.",
+   "visual": {
+    "type": "record",
+    "organ": "brain",
+    "value": 86000000000,
+    "label": "nerve cells",
+    "note": "Cleveland Clinic",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "The fastest nerve signals in your body travel at up to a hundred and twenty meters per second. That's about two hundred and seventy miles per hour.",
+   "visual": {
+    "type": "pulse",
+    "organ": "brain",
+    "num": "120 M/S",
+    "label": "the fastest nerve signals",
+    "note": "≈ 270 mph · University of Toronto"
+   }
+  },
+  {
+   "say": "And while your brain is busy, your eyes keep doing something you never notice.",
+   "visual": {
+    "type": "title",
+    "organ": "eye",
+    "kicker": "MEANWHILE, YOUR EYES",
+    "title": "YOU BLINK\nAND MISS IT.",
+    "sub": "thousands of times."
+   }
+  },
+  {
+   "say": "You blink about fourteen to seventeen times a minute. Across a waking day, that's up to around sixteen thousand blinks. Each one sweeps your eyes clean. And your brain simply edits them out.",
+   "visual": {
+    "type": "record",
+    "organ": "eye",
+    "value": 16320,
+    "label": "blinks in a waking day",
+    "note": "14–17 a minute · Cleveland Clinic"
+   }
+  },
+  {
+   "say": "Why don't you see the darkness? Because your brain fills in the gaps. It stitches the moments before and after each blink together, so the world looks continuous. You've been watching an edited version of reality your whole life.",
+   "visual": {
+    "type": "title",
+    "organ": "brain",
+    "kicker": "THE EDIT",
+    "title": "YOUR BRAIN\nFILLS THE GAP.",
+    "sub": "every single blink.",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "So your brain hides the blinks. But there's something else you lose all day, and you can find it on your pillow.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "COMING UP",
+    "title": "WHAT YOU\nLEAVE BEHIND.",
+    "sub": "all day long."
+   }
+  },
+  {
+   "chapter": "The surface: 100 hairs a day",
+   "say": "Chapter five. Five in the afternoon. Look at your hairbrush. Or your shoulders.",
+   "visual": {
+    "type": "dial",
+    "organ": "skin",
+    "from": 14,
+    "hour": 17,
+    "kicker": "CHAPTER 5",
+    "name": "the surface"
+   }
+  },
+  {
+   "say": "Dermatologists say it's normal to shed between fifty and a hundred hairs a day. Every single day. Most people never notice.",
+   "visual": {
+    "type": "record",
+    "organ": "skin",
+    "value": 100,
+    "label": "hairs lost a day, and that's normal",
+    "note": "50 to 100 a day · American Academy of Dermatology"
+   }
+  },
+  {
+   "say": "Why so many? Because every hair on your head runs on its own clock. It grows for years, then it rests, and then it lets go, so a new hair can push through from the same root. Losing hair every day is part of how you keep it.",
+   "visual": {
+    "type": "title",
+    "organ": "skin",
+    "kicker": "THE HAIR CLOCK",
+    "title": "GROW. REST.\nLET GO.",
+    "sub": "every hair, on its own schedule.",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "Your nails are growing too. Fingernails, about three and a half millimeters a month. Toenails? Less than half that speed. About one point six.",
+   "visual": {
+    "type": "graph",
+    "organ": "skin",
+    "title": "NAIL GROWTH",
+    "sub": "fingernails, millimeters · Yaemsiri et al. 2010",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      10.4
+     ],
+     [
+      6,
+      20.8
+     ],
+     [
+      9,
+      31.2
+     ],
+     [
+      12,
+      41.6
+     ]
+    ],
+    "xmax": 12.6,
+    "ymax": 48,
+    "xlabels": [
+     [
+      0,
+      "month 0"
+     ],
+     [
+      3,
+      "3"
+     ],
+     [
+      6,
+      "6"
+     ],
+     [
+      9,
+      "9"
+     ],
+     [
+      12,
+      "12"
+     ]
+    ],
+    "ylabels": [
+     [
+      0,
+      "0"
+     ],
+     [
+      10,
+      "10"
+     ],
+     [
+      20,
+      "20"
+     ],
+     [
+      30,
+      "30"
+     ],
+     [
+      40,
+      "40 mm"
+     ]
+    ],
+    "marks": [
+     [
+      1,
+      3.47,
+      "3.47 mm"
+     ],
+     [
+      12,
+      41.6,
+      "≈ 4 cm"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Add up a year, and that's about four centimeters of fingernail, and about two of toenail. Pushed out from the base, a tiny bit every day.",
+   "visual": {
+    "type": "duo",
+    "title": "IN ONE YEAR",
+    "left": {
+     "organ": "skin",
+     "num": "≈ 4 CM",
+     "label": "of fingernail"
+    },
+    "right": {
+     "organ": "bone",
+     "num": "≈ 2 CM",
+     "label": "of toenail",
+     "scale": 200
+    }
+   }
+  },
+  {
+   "say": "But the strangest thing your body does today is happening deep inside your bones. And by tonight, it will make you shorter.",
+   "visual": {
+    "type": "title",
+    "organ": "bone",
+    "kicker": "COMING UP",
+    "title": "TONIGHT,\nYOU SHRINK.",
+    "sub": "really.",
+    "camera": "push_in"
+   }
+  },
+  {
+   "chapter": "The frame: 2 cm shorter by night",
+   "say": "Chapter six. Nine at night. You're about to go to bed, and you are measurably shorter than you were this morning.",
+   "visual": {
+    "type": "dial",
+    "organ": "bone",
+    "from": 17,
+    "hour": 21,
+    "kicker": "CHAPTER 6",
+    "name": "the frame"
+   }
+  },
+  {
+   "say": "Researchers at the University of Manchester say we can be up to two centimeters taller in the morning than when we go to bed. All day, gravity squeezes the soft discs in your spine. At night, lying down, they recover.",
+   "visual": {
+    "type": "record",
+    "organ": "bone",
+    "value": 2,
+    "label": "centimeters shorter by night",
+    "note": "up to 2 cm · University of Manchester, 2016"
+   }
+  },
+  {
+   "say": "And your skeleton has changed far more than that. You were born with about two hundred and seventy bones. As an adult, you have around two hundred and six. Many of them fused together as you grew.",
+   "visual": {
+    "type": "duo",
+    "title": "BONES",
+    "left": {
+     "organ": "bone",
+     "num": "270",
+     "label": "at birth",
+     "scale": 180
+    },
+    "right": {
+     "organ": "bone",
+     "num": "206",
+     "label": "as an adult",
+     "scale": 250
+    }
+   }
+  },
+  {
+   "say": "The plates of a baby's skull, for example, start out separate, so the head can grow. Over time, they join. Bone isn't a dead frame you're carrying around. It's living tissue, constantly torn down and rebuilt.",
+   "visual": {
+    "type": "title",
+    "organ": "bone",
+    "kicker": "LIVING BONE",
+    "title": "TORN DOWN.\nREBUILT.",
+    "sub": "all your life."
+   }
+  },
+  {
+   "say": "But here's the number that changes everything. According to the U.S. Surgeon General's report on bone health, most of your adult skeleton is replaced about every ten years.",
+   "visual": {
+    "type": "record",
+    "organ": "bone",
+    "value": 10,
+    "label": "years to replace most of your skeleton",
+    "note": "U.S. Surgeon General, 2004",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "New blood every few months. New bone every decade. So what's actually staying the same?",
+   "visual": {
+    "type": "title",
+    "organ": "bone",
+    "kicker": "SO WHICH ONE IS YOU?",
+    "title": "NEW BLOOD.\nNEW BONE.",
+    "sub": "same you?"
+   }
+  },
+  {
+   "chapter": "Midnight: one day, counted",
+   "say": "Midnight again. One full day. Let's count it up.",
+   "visual": {
+    "type": "dial",
+    "organ": "heart",
+    "from": 21,
+    "hour": 24,
+    "kicker": "THE FINAL COUNT",
+    "name": "one day, counted",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "About a hundred thousand heartbeats. More than seventeen thousand breaths. A hundred and fifty quarts of blood, cleaned.",
+   "visual": {
+    "type": "stats",
+    "organ": "heart",
+    "title": "ONE DAY, COUNTED",
+    "rows": [
+     [
+      "100,000",
+      "heartbeats"
+     ],
+     [
+      "17,000+",
+      "breaths"
+     ],
+     [
+      "150 QT",
+      "of blood filtered"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "Up to sixteen thousand blinks. Up to a hundred hairs, gone. And two centimeters of height, lost, and found again.",
+   "visual": {
+    "type": "stats",
+    "organ": "eye",
+    "title": "AND ALSO",
+    "rows": [
+     [
+      "16,000",
+      "blinks"
+     ],
+     [
+      "100",
+      "hairs, gone"
+     ],
+     [
+      "2 CM",
+      "lost, and found again"
+     ]
+    ]
+   }
+  },
+  {
+   "say": "And the number we started with. About three hundred and thirty billion new cells, built today. Every single day, without asking you.",
+   "visual": {
+    "type": "record",
+    "organ": "rbc",
+    "value": 330000000000,
+    "label": "new cells, built today",
+    "note": "Sender & Milo, Nature Medicine, 2021",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "So the body that wakes up tomorrow is not exactly the one that went to sleep. It's rebuilt, a little, every day. Counted.",
+   "visual": {
+    "type": "title",
+    "organ": "rbc",
+    "kicker": "INNER NUMBERS",
+    "title": "REBUILT,\nEVERY DAY.",
+    "sub": "your body, counted."
+   }
+  },
+  {
+   "say": "There's a whole playlist of these, called Your Body in Numbers. The next one is on your screen right now. See you there.",
+   "visual": {
+    "type": "title",
+    "organ": "brain",
+    "kicker": "WATCH NEXT",
+    "title": "YOUR BODY\nIN NUMBERS",
+    "sub": "the full playlist →"
+   }
+  }
+ ]
+}
