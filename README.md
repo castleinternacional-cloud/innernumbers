@@ -27,7 +27,7 @@ ep001 heartbeats · ep002 blinking · ep003 breathing · ep004 red blood cells �
 ## Publishing (since 15 Nov 2026)
 - Videos go to branch `media` (`media/w{N}_{topic}.mp4`); Buffer downloads them from raw.githubusercontent.com at publish time — never delete that branch.
 - `publish/schedule.json` on `main` = the week to publish: `{"week": "...", "posts": [{"ep","dueAt" (UTC, 17:00Z = 12:00 Bogota),"video","title","text","text_youtube","text_tiktok","text_instagram"}]}`.
-- n8n workflow "Inner Numbers – Publicar semana en Buffer" (n8n-n8n.ml7ihy.easypanel.host, active) runs every Sunday 18:00 Bogota: reads schedule.json, skips past dates, creates one Buffer post per channel (YouTube, TikTok, Instagram — Buffer free plan, 3 channels, 10 queued per channel). Running it twice duplicates posts.
+- n8n workflow "Inner Numbers – Publicar semana en Buffer" (n8n-n8n.ml7ihy.easypanel.host, active) runs every Sunday 18:00 Bogota: reads schedule.json, skips past dates, creates one Buffer post per channel (YouTube, TikTok, Instagram — Buffer free plan, 3 channels, 10 queued per channel). Anti-duplicate guard (since 2026-11-19): node "Buffer: ya programados" lists existing Buffer posts (dueAt from 2 days ago) and "Preparar posts" skips any channel+dueAt that already exists; if that read fails the run stops instead of creating. Running it twice is now safe. The Buffer API key lives only in the n8n credential "Header Auth account" (value "Bearer <key>").
 - Only update schedule.json after Mathias approves the week's videos.
 
 ## Camera moves (opt-in, per scene)

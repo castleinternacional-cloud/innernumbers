@@ -107,7 +107,7 @@
   },
   {
    "parameters": {
-    "jsCode": "\n// Junta el calendario de GitHub con los canales de Buffer y prepara un post por canal\nconst cal = $('Leer calendario (GitHub)').first().json;\nconst chans = $('Buffer: canales').first().json.data.channels;\nconst now = Date.now() + 10 * 60 * 1000; // solo posts al menos 10 min en el futuro\nconst out = [];\nconst mutation = `mutation CreatePost($input: CreatePostInput!) {\n  createPost(input: $input) {\n    __typename\n    ... on PostActionSuccess { post { id dueAt } }\n    ... on MutationError { message }\n  }\n}`;\nfor (const p of cal.posts) {\n  if (new Date(p.dueAt).getTime() < now) continue;\n  for (const c of chans) {\n    const s = (c.service || '').toLowerCase();\n    let metadata = null;\n    if (s === 'youtube') metadata = { youtube: { title: p.title, privacy: 'public', categoryId: '27', madeForKids: false, notifySubscribers: true } };\n    else if (s === 'instagram') metadata = { instagram: { type: 'reel', shouldShareToFeed: true } };\n    else if (s === 'tiktok') metadata = { tiktok: { title: p.title } };\n    else if (s === 'facebook') metadata = { facebook: { type: 'reel' } };\n    else continue;\n    const input = {\n      channelId: c.id, text: (p['text_' + s] || p.text), schedulingType: 'automatic', mode: 'customScheduled',\n      dueAt: p.dueAt, assets: [{ video: { url: p.video } }], metadata\n    };\n    out.push({ json: { ep: p.ep, channel: c.service + ' · ' + (c.displayName || c.name), dueAt: p.dueAt,\n                       body: { query: mutation, variables: { input } } } });\n  }\n}\nif (out.length === 0) return [{ json: { aviso: 'No hay posts futuros en el calendario' } }];\nreturn out;\n"
+    "jsCode": "\n// Junta el calendario de GitHub con los canales de Buffer y prepara un post por canal\nconst cal = $('Leer calendario (GitHub)').first().json;\nconst chans = $('Buffer: canales').first().json.data.channels;\n// ANTI-DUPLICADOS: mira lo que ya existe en Buffer y se salta cualquier canal + fecha repetido\nconst ya = $('Buffer: ya programados').first().json;\nif (!ya || !ya.data || !ya.data.posts) {\n  throw new Error('No pude leer los posts que ya hay en Buffer; paro para no duplicar. ' + JSON.stringify(ya && ya.errors || ya).slice(0, 300));\n}\nconst key = (ch, due) => ch + '|' + new Date(due).toISOString();\nconst existentes = new Set(ya.data.posts.edges.map(e => key(e.node.channelId, e.node.dueAt)));\nlet saltados = 0;\nconst now = Date.now() + 10 * 60 * 1000; // solo posts al menos 10 min en el futuro\nconst out = [];\nconst mutation = `mutation CreatePost($input: CreatePostInput!) {\n  createPost(input: $input) {\n    __typename\n    ... on PostActionSuccess { post { id dueAt } }\n    ... on MutationError { message }\n  }\n}`;\nfor (const p of cal.posts) {\n  if (new Date(p.dueAt).getTime() < now) continue;\n  for (const c of chans) {\n    const s = (c.service || '').toLowerCase();\n    let metadata = null;\n    if (s === 'youtube') metadata = { youtube: { title: p.title, privacy: 'public', categoryId: '27', madeForKids: false, notifySubscribers: true } };\n    else if (s === 'instagram') metadata = { instagram: { type: 'reel', shouldShareToFeed: true } };\n    else if (s === 'tiktok') metadata = { tiktok: { title: p.title } };\n    else if (s === 'facebook') metadata = { facebook: { type: 'reel' } };\n    else continue;\n    const k = key(c.id, p.dueAt);\n    if (existentes.has(k)) { saltados++; continue; }\n    existentes.add(k);\n    const input = {\n      channelId: c.id, text: (p['text_' + s] || p.text), schedulingType: 'automatic', mode: 'customScheduled',\n      dueAt: p.dueAt, assets: [{ video: { url: p.video } }], metadata\n    };\n    out.push({ json: { ep: p.ep, channel: c.service + ' · ' + (c.displayName || c.name), dueAt: p.dueAt,\n                       body: { query: mutation, variables: { input } } } });\n  }\n}\nif (out.length === 0) return [{ json: { aviso: 'Nada nuevo que programar', ya_existian: saltados } }];\nreturn out;\n"
    },
    "name": "Preparar posts",
    "type": "n8n-nodes-base.code",
@@ -145,10 +145,70 @@
    "type": "n8n-nodes-base.httpRequest",
    "typeVersion": 4.2,
    "position": [
-    1200,
+    1400,
     100
    ],
    "id": "ab6f36a1-c002-4cff-8640-07b05893d1ea"
+  },
+  {
+   "id": "dedup-ya-programados",
+   "name": "Buffer: ya programados",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    940,
+    260
+   ],
+   "credentials": {},
+   "parameters": {
+    "method": "POST",
+    "url": "https://api.buffer.com",
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify({ query: \"query($org: OrganizationId!, $start: DateTime!) { posts(first: 100, input: { organizationId: $org, filter: { dueAt: { start: $start } } }) { edges { node { id dueAt channelId status } } } }\", variables: { org: $('Buffer: organización').first().json.data.account.organizations[0].id, start: new Date(Date.now() - 2*24*3600*1000).toISOString() } }) }}",
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "json"
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hay-algo",
+   "name": "¿Hay posts nuevos?",
+   "type": "n8n-nodes-base.filter",
+   "typeVersion": 2,
+   "position": [
+    1180,
+    100
+   ],
+   "parameters": {
+    "conditions": {
+     "options": {
+      "caseSensitive": true,
+      "leftValue": "",
+      "typeValidation": "loose"
+     },
+     "conditions": [
+      {
+       "id": "c1",
+       "leftValue": "={{ $json.body !== undefined }}",
+       "rightValue": true,
+       "operator": {
+        "type": "boolean",
+        "operation": "true",
+        "singleValue": true
+       }
+      }
+     ],
+     "combinator": "and"
+    },
+    "options": {}
+   }
   }
  ],
  "connections": {
@@ -200,7 +260,7 @@
    "main": [
     [
      {
-      "node": "Preparar posts",
+      "node": "Buffer: ya programados",
       "type": "main",
       "index": 0
      }
@@ -208,6 +268,28 @@
    ]
   },
   "Preparar posts": {
+   "main": [
+    [
+     {
+      "node": "¿Hay posts nuevos?",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Buffer: ya programados": {
+   "main": [
+    [
+     {
+      "node": "Preparar posts",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "¿Hay posts nuevos?": {
    "main": [
     [
      {
