@@ -1,0 +1,106 @@
+{
+ "id": "v2_vessels",
+ "organ": "heart",
+ "seed": 24,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "If you laid all your blood vessels end to end, how far would they go? Guess before I say it.",
+   "visual": {
+    "type": "heart3d",
+    "title": "HOW FAR?",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "Over sixty thousand miles.",
+   "visual": {
+    "type": "counter",
+    "value": 60000,
+    "label": "MILES OF BLOOD VESSELS",
+    "suffix": "+",
+    "note": "Cleveland Clinic"
+   }
+  },
+  {
+   "say": "That's about ninety six thousand kilometers.",
+   "visual": {
+    "type": "counter",
+    "value": 96000,
+    "label": "KILOMETERS",
+    "suffix": "",
+    "note": "60,000 miles × 1.609"
+   }
+  },
+  {
+   "say": "So how far is that, really?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "The Earth is about forty thousand kilometers around.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "KILOMETERS",
+    "items": [
+     [
+      "EARTH",
+      40075,
+      "around"
+     ],
+     [
+      "YOUR VESSELS",
+      96000,
+      "end to end"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "Your vessels could wrap around it almost two and a half times.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "KILOMETERS",
+    "items": [
+     [
+      "EARTH",
+      40075,
+      "around"
+     ],
+     [
+      "YOUR VESSELS",
+      96000,
+      "end to end"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "But are they mostly big arteries? Not even close. Most are tiny capillaries, venules and arterioles.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "And one pump, about the size of your fist, pushes blood through all of it.",
+   "visual": {
+    "type": "cutaway",
+    "value": "ONE PUMP",
+    "label": "FOR 60,000 MILES"
+   }
+  },
+  {
+   "say": "So, still want to guess?",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "id": "v2_sevenyears",
+ "organ": "bone",
+ "seed": 26,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "They say every seven years, you become a completely new person. You don't.",
+   "visual": {
+    "type": "heart3d",
+    "title": "7 YEARS?",
+    "sub": "the famous myth",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "Your body does replace about three hundred and thirty billion cells every day.",
+   "visual": {
+    "type": "counter",
+    "value": 330,
+    "label": "CELLS REPLACED EVERY DAY",
+    "suffix": " BILLION",
+    "note": "Sender & Milo, 2021"
+   }
+  },
+  {
+   "say": "But close to ninety percent of them are blood cells.",
+   "visual": {
+    "type": "counter",
+    "value": 90,
+    "label": "ARE BLOOD CELLS",
+    "suffix": "%",
+    "note": "of the daily turnover"
+   }
+  },
+  {
+   "say": "So does everything else run on a seven year clock?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "Not even close. The lining of your gut is replaced every few days.",
+   "visual": {
+    "type": "heart3d",
+    "title": "EVERY FEW DAYS",
+    "sub": "your gut lining"
+   }
+  },
+  {
+   "say": "And your skeleton? About ten years.",
+   "visual": {
+    "type": "counter",
+    "value": 10,
+    "label": "TO RENEW YOUR SKELETON",
+    "suffix": " YEARS",
+    "note": "most of it, about every 10 years (U.S. Surgeon General)"
+   }
+  },
+  {
+   "say": "So what's actually happening inside your bones?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "They're rebuilt from the inside, a little at a time, for your whole life.",
+   "visual": {
+    "type": "cutaway",
+    "value": "REMODELING",
+    "label": "ALL YOUR LIFE"
+   }
+  },
+  {
+   "say": "Different parts, different clocks. So the next time you hear",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

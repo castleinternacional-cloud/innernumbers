@@ -65,7 +65,7 @@ def sc_counter(sc, t, lt):
     p, c, _ = organ_screen(organ_of(sc), t, scale=200, cy=H * 0.56)
     v = sc["visual"]; target = v["value"]; dur = sc["_dur"]
     def ov(d):
-        x = ease(lt / max(0.5, dur * 0.8)); val = int(target * (1 - (1 - x) ** 3))
+        x = ease(lt / max(0.5, min(1.6, dur * 0.6))); val = int(round(target * (1 - (1 - x) ** 3)))
         fit_text(d, f"{val:,}" + v.get("suffix", ""), H * 0.27, 190, (255, 255, 255))
         d.text((W / 2, H * 0.27 + 130), v.get("label", ""), font=font(FBo, 54), fill=(255, 210, 225), anchor="mm")
         if v.get("note"): d.text((W / 2, H * 0.27 + 200), v["note"], font=font(FM, 40), fill=(170, 180, 210), anchor="mm")
@@ -307,7 +307,7 @@ def captions_v2(d, im, t, ch):
             tw = d.textlength(" ".join(x[0] for x in ln), font=f); x = W / 2 - tw / 2
             for (w, a, b) in ln:
                 k = float(np.clip((t - a) / 0.18, 0, 1))
-                ww = w.strip(".,?!").lower(); key = ww in NUMWORDS or ww.rstrip("s") in NUMWORDS or ww in ("tens", "dozens") or any(ch.isdigit() for ch in w)
+                ww = w.strip(".,?!").lower(); key = ww in NUMWORDS or (ww.rstrip("s") in NUMWORDS and ww != "ones") or ww in ("tens", "dozens") or any(ch.isdigit() for ch in w)
                 base = (255, 214, 60) if key else (255, 255, 255)
                 col = tuple(int(v * k + 20 * (1 - k)) for v in base)
                 if k > 0: d.text((x, y0 + i * 80 + (1 - k) * 14), w, font=f, fill=col, anchor="lm", stroke_width=3, stroke_fill=(10, 5, 20))

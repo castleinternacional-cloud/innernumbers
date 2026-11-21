@@ -23,6 +23,9 @@ English channel "Inner Numbers — your body, counted". Owner: Mathias.
 
 ## Topics already used
 ep001 heartbeats · ep002 blinking · ep003 breathing · ep004 red blood cells · ep005 skin · ep006 bones · ep007 brain
+W48 (episodes_v2): bacteria (10:1 myth) · dna (2 m per cell) · eyecolor (rods vs cones) · vessels (60,000 miles) · hair (100 a day) · sevenyears (7-year myth) · nerves (signal speed)
+Inner Factory (films/): mucus · red cell 120 days · knuckles · sweat · bones alarm
+Organs in engine/organs.py: heart, eye, lungs, rbc, skin, bone, brain, bacteria, dna, neuron
 
 ## Publishing (since 15 Nov 2026)
 - Videos go to branch `media` (`media/w{N}_{topic}.mp4`); Buffer downloads them from raw.githubusercontent.com at publish time — never delete that branch.

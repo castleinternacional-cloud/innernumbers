@@ -1,0 +1,85 @@
+{
+ "id": "v2_dna",
+ "organ": "dna",
+ "seed": 22,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "Inside almost every cell you have, there's two meters of thread.",
+   "visual": {
+    "type": "heart3d",
+    "title": "2 METERS",
+    "sub": "in one cell",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "It's DNA. Stretched end to end, about two meters of it, in a single cell.",
+   "visual": {
+    "type": "counter",
+    "value": 2,
+    "label": "OF DNA IN ONE CELL",
+    "suffix": " m",
+    "note": "stretched end to end"
+   }
+  },
+  {
+   "say": "And it's packed into a nucleus about ten micrometers wide.",
+   "visual": {
+    "type": "counter",
+    "value": 10,
+    "label": "NUCLEUS WIDTH",
+    "suffix": " µm",
+    "note": "a hundredth of a millimeter"
+   }
+  },
+  {
+   "say": "So how much longer is the thread than the box it lives in?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "About two hundred thousand times longer.",
+   "visual": {
+    "type": "counter",
+    "value": 200000,
+    "label": "LONGER THAN ITS NUCLEUS",
+    "suffix": "×",
+    "note": "2 m ÷ 10 µm"
+   }
+  },
+  {
+   "say": "If the nucleus were a basketball, the DNA inside would be forty eight kilometers long.",
+   "visual": {
+    "type": "counter",
+    "value": 48,
+    "label": "OF THREAD IN A BASKETBALL",
+    "suffix": " km",
+    "note": "same ratio, scaled up"
+   }
+  },
+  {
+   "say": "And what's written on all that thread?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "About three billion letters from each parent. Six billion in every cell, paired up like the rungs of a ladder.",
+   "visual": {
+    "type": "cutaway",
+    "value": "6 BILLION",
+    "label": "LETTERS IN EVERY CELL"
+   }
+  },
+  {
+   "say": "All of it folded, right now.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

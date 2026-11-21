@@ -1,0 +1,109 @@
+{
+ "id": "v2_hair",
+ "organ": "skin",
+ "seed": 25,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "You lose up to a hundred hairs every single day. And that's completely normal.",
+   "visual": {
+    "type": "heart3d",
+    "title": "100 A DAY",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "Dermatologists say fifty to a hundred a day is normal.",
+   "visual": {
+    "type": "counter",
+    "value": 100,
+    "label": "HAIRS LOST PER DAY",
+    "suffix": "",
+    "note": "50–100 is normal (AAD)"
+   }
+  },
+  {
+   "say": "That's up to thirty six thousand hairs a year. So why aren't you bald?",
+   "visual": {
+    "type": "counter",
+    "value": 36500,
+    "label": "HAIRS A YEAR",
+    "suffix": "",
+    "note": "100 × 365"
+   }
+  },
+  {
+   "say": "Because your scalp holds more than a hundred thousand.",
+   "visual": {
+    "type": "counter",
+    "value": 100000,
+    "label": "HAIRS ON YOUR HEAD",
+    "suffix": "+"
+   }
+  },
+  {
+   "say": "Brunettes have about a hundred and ten thousand.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "HAIRS ON YOUR HEAD",
+    "items": [
+     [
+      "BRUNETTE",
+      110000,
+      "average"
+     ],
+     [
+      "BLONDE",
+      150000,
+      "average"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "Blondes, closer to a hundred and fifty thousand.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "HAIRS ON YOUR HEAD",
+    "items": [
+     [
+      "BRUNETTE",
+      110000,
+      "average"
+     ],
+     [
+      "BLONDE",
+      150000,
+      "average"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "But where does every one of those hairs actually come from?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "A tiny pocket in your skin called a follicle. You have about five million of them, all over your body.",
+   "visual": {
+    "type": "cutaway",
+    "value": "5 MILLION",
+    "label": "HAIR FOLLICLES ON YOUR BODY"
+   }
+  },
+  {
+   "say": "And tomorrow, it starts again.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

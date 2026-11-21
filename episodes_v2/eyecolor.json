@@ -1,0 +1,104 @@
+{
+ "id": "v2_eyecolor",
+ "organ": "eye",
+ "seed": 23,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "Quick question. How much of your eye actually sees color? Most people get this wrong.",
+   "visual": {
+    "type": "heart3d",
+    "title": "COLOR?",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "Your retina has two kinds of light sensors. Cones, for color. And rods, which only see light and dark.",
+   "visual": {
+    "type": "heart3d",
+    "title": "2 SENSORS",
+    "sub": "rods  ·  cones"
+   }
+  },
+  {
+   "say": "Cones? Only about five percent.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "YOUR LIGHT SENSORS",
+    "items": [
+     [
+      "CONES",
+      5,
+      "color"
+     ],
+     [
+      "RODS",
+      95,
+      "light & dark"
+     ]
+    ],
+    "unit": "%"
+   }
+  },
+  {
+   "say": "The other ninety five percent are rods. They can't see color at all.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "YOUR LIGHT SENSORS",
+    "items": [
+     [
+      "CONES",
+      5,
+      "color"
+     ],
+     [
+      "RODS",
+      95,
+      "light & dark"
+     ]
+    ],
+    "unit": "%"
+   }
+  },
+  {
+   "say": "So why does the world look so colorful?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "Because your six million or so cones are packed where you look.",
+   "visual": {
+    "type": "counter",
+    "value": 6,
+    "label": "CONES PER EYE",
+    "suffix": " MILLION",
+    "note": "about 6–7 million"
+   }
+  },
+  {
+   "say": "Right at the center of your retina, there are only cones. No rods at all.",
+   "visual": {
+    "type": "cutaway",
+    "value": "ONLY CONES",
+    "label": "AT THE CENTER (FOVEA)"
+   }
+  },
+  {
+   "say": "And out at the edges? It's mostly rods, and your brain fills in the rest.",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "So, one more time.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

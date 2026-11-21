@@ -1,0 +1,110 @@
+{
+ "id": "v2_bacteria",
+ "organ": "bacteria",
+ "seed": 21,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "You've heard bacteria outnumber your cells ten to one. That's wrong.",
+   "visual": {
+    "type": "heart3d",
+    "title": "10 : 1 ?",
+    "sub": "the famous claim",
+    "camera": "pull_back"
+   }
+  },
+  {
+   "say": "A twenty sixteen recount found about thirty eight trillion bacteria living in you.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "CELLS IN YOUR BODY",
+    "items": [
+     [
+      "BACTERIA",
+      38,
+      "trillion"
+     ],
+     [
+      "HUMAN CELLS",
+      30,
+      "trillion"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "And about thirty trillion of your own cells. Not ten to one. Closer to one to one.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "CELLS IN YOUR BODY",
+    "items": [
+     [
+      "BACTERIA",
+      38,
+      "trillion"
+     ],
+     [
+      "HUMAN CELLS",
+      30,
+      "trillion"
+     ]
+    ],
+    "unit": ""
+   }
+  },
+  {
+   "say": "So if there are that many, how much do they all weigh?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "About two hundred grams. Less than a full can of soda.",
+   "visual": {
+    "type": "counter",
+    "value": 200,
+    "label": "ALL YOUR BACTERIA",
+    "suffix": " g",
+    "note": "about 0.2 kg"
+   }
+  },
+  {
+   "say": "And here's the twist. Which of your own cells wins the count?",
+   "visual": {
+    "type": "heart3d",
+    "organ": "rbc"
+   }
+  },
+  {
+   "say": "Red blood cells. About twenty five trillion of your thirty.",
+   "visual": {
+    "type": "counter",
+    "value": 25,
+    "label": "RED BLOOD CELLS",
+    "suffix": " TRILLION",
+    "note": "of your ~30 trillion human cells",
+    "organ": "rbc"
+   }
+  },
+  {
+   "say": "And inside, they have no nucleus. Most of the cells that make you are tiny bags of hemoglobin.",
+   "visual": {
+    "type": "cutaway",
+    "value": "25 OF 30 TRILLION",
+    "label": "OF YOUR CELLS",
+    "organ": "rbc"
+   }
+  },
+  {
+   "say": "So the next time someone tells you",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

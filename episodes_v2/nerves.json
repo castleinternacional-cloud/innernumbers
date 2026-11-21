@@ -1,0 +1,106 @@
+{
+ "id": "v2_nerves",
+ "organ": "neuron",
+ "seed": 27,
+ "voice": "am_michael",
+ "speed": 1.05,
+ "captions": "d4y",
+ "scenes": [
+  {
+   "say": "Some signals in your nerves travel faster than a race car. Others, about as fast as you walk.",
+   "visual": {
+    "type": "heart3d",
+    "title": "TWO SPEEDS",
+    "camera": "push_in"
+   }
+  },
+  {
+   "say": "The fastest fibers carry signals at up to a hundred and twenty meters a second.",
+   "visual": {
+    "type": "counter",
+    "value": 120,
+    "label": "FASTEST NERVE FIBERS",
+    "suffix": " m/s",
+    "note": "A-alpha fibers"
+   }
+  },
+  {
+   "say": "That's about four hundred and thirty kilometers an hour.",
+   "visual": {
+    "type": "counter",
+    "value": 430,
+    "label": "TOP NERVE SPEED",
+    "suffix": " km/h",
+    "note": "120 m/s × 3.6 ≈ 432 km/h"
+   }
+  },
+  {
+   "say": "So why are some so slow?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "The fast ones are wrapped in a fatty insulation called myelin.",
+   "visual": {
+    "type": "bars",
+    "show": 1,
+    "title": "SIGNAL SPEED",
+    "items": [
+     [
+      "FAST FIBERS",
+      120,
+      "myelin"
+     ],
+     [
+      "PAIN FIBERS",
+      2.5,
+      "no myelin"
+     ]
+    ],
+    "unit": " m/s"
+   }
+  },
+  {
+   "say": "Some pain fibers have none. They top out around two and a half meters a second.",
+   "visual": {
+    "type": "bars",
+    "show": 2,
+    "title": "SIGNAL SPEED",
+    "items": [
+     [
+      "FAST FIBERS",
+      120,
+      "myelin"
+     ],
+     [
+      "PAIN FIBERS",
+      2.5,
+      "no myelin"
+     ]
+    ],
+    "unit": " m/s"
+   }
+  },
+  {
+   "say": "Ever stubbed your toe, felt the hit, and then waited for the ache?",
+   "visual": {
+    "type": "heart3d"
+   }
+  },
+  {
+   "say": "That's the slow lane catching up. Myelin is what makes the fast lane fast.",
+   "visual": {
+    "type": "cutaway",
+    "value": "MYELIN",
+    "label": "THE FAST LANE"
+   }
+  },
+  {
+   "say": "Right now, inside you.",
+   "visual": {
+    "type": "end"
+   }
+  }
+ ]
+}

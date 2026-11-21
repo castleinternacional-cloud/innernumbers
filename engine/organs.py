@@ -241,7 +241,90 @@ class Bacteria(Organ):
         return s, v
     def pulse(self, t): return 1.0 + 0.02 * math.sin(t * 2.0)
 
-REGISTRY = {"heart": Heart, "eye": Eye, "lungs": Lungs, "rbc": RBC, "skin": Skin, "bone": Bone, "brain": Brain, "bacteria": Bacteria}
+# ------------------------------------------------------------------ DNA double helix (axis = z)
+class DNA(Organ):
+    name = "dna"; pal = ((120, 255, 220), (60, 160, 255), (190, 90, 255)); view_tilt = 0.15
+    labels = [("BACKBONE", (0.45, 0.55), 1), ("BASE PAIRS", (0.0, -0.35), -1)]
+    R0, TURNS, ZH = 0.42, 2.6, 1.45
+    def _strand(self, rng, n, phase, jitter=0.03):
+        z = rng.uniform(-self.ZH, self.ZH, n); a = z / (2 * self.ZH) * self.TURNS * 2 * np.pi + phase
+        p = np.stack([self.R0 * np.cos(a), self.R0 * np.sin(a), z], 1)
+        return p + rng.normal(size=(n, 3)) * jitter
+    def _rungs(self, rng, n, k=34):
+        zr = np.linspace(-self.ZH * 0.97, self.ZH * 0.97, k); i = rng.integers(0, k, n); z = zr[i]
+        a = z / (2 * self.ZH) * self.TURNS * 2 * np.pi; u = rng.uniform(-1, 1, n)
+        p = np.stack([self.R0 * np.cos(a) * u, self.R0 * np.sin(a) * u, z], 1)
+        self._rung_u = u
+        return p + rng.normal(size=(n, 3)) * 0.012
+    def build(self, rng):
+        ns = (NS - 1600) // 2
+        s = np.concatenate([self._strand(rng, ns, 0), self._strand(rng, NS - 1600 - ns, np.pi), self._rungs(rng, 1600)])
+        nv = N - NS
+        v = np.concatenate([self._strand(rng, nv // 3, 0, 0.06), self._strand(rng, nv // 3, np.pi, 0.06), self._rungs(rng, nv - 2 * (nv // 3))])
+        return s, v
+    def pulse(self, t): return 1.0 + 0.015 * math.sin(t * 2.2)
+    def surface_colors(self, P):
+        rr = np.sqrt(P[:, 0] ** 2 + P[:, 1] ** 2)
+        c = np.tile(np.array([90, 200, 255.]), (len(P), 1))
+        rung = rr < self.R0 * 0.85
+        side = (P[:, 0] * np.cos(P[:, 2] * 6) > 0)
+        c[rung & side] = np.array([255, 90, 170.]); c[rung & ~side] = np.array([255, 210, 80.])
+        return c * 1.2
+    def slice_colors(self, P):
+        rr = np.sqrt(P[:, 0] ** 2 + P[:, 1] ** 2)
+        c = np.tile(np.array([120, 230, 255.]) * 1.8, (len(P), 1))
+        rung = rr < self.R0 * 0.85
+        c[rung] = np.where((np.floor(P[rung, 2] * 12) % 2 == 0)[:, None], np.array([255, 90, 170.]) * 1.7, np.array([255, 210, 80.]) * 1.7)
+        return c
+
+# ------------------------------------------------------------------ neuron (cell body top, axon down along -z)
+class Neuron(Organ):
+    name = "neuron"; pal = ((255, 200, 90), (255, 110, 200), (120, 140, 255)); view_tilt = 0.1
+    labels = [("CELL BODY", (-0.15, 0.78), -1), ("MYELIN", (0.07, -0.12), 1), ("AXON", (-0.03, -0.55), -1)]
+    SOMA = np.array([0.0, 0.0, 0.95])
+    def _branches(self, rng, n):
+        segs = []
+        def br(p, d, L, depth, w):
+            q = p + d * L; segs.append((p, q, w))
+            if depth == 0: return
+            for a in (-0.55, 0.5):
+                c, s = math.cos(a), math.sin(a)
+                nd = np.array([d[0] * c - d[2] * s, d[1] + rng.normal() * 0.2, d[0] * s + d[2] * c]); nd /= np.linalg.norm(nd)
+                br(q, nd, L * 0.7, depth - 1, w * 0.7)
+        for ang in np.linspace(-1.2, 1.2, 5):
+            d = np.array([math.sin(ang), rng.normal() * 0.3, math.cos(ang) * 0.8 + 0.2]); d /= np.linalg.norm(d)
+            br(self.SOMA + d * 0.2, d, 0.32, 3, 0.03)
+        # axon terminals
+        for ang in (-0.7, -0.25, 0.25, 0.7):
+            d = np.array([math.sin(ang), 0, -math.cos(ang)]); br(np.array([0, 0, -1.25]), d, 0.22, 1, 0.02)
+        k = rng.integers(0, len(segs), n); u = rng.uniform(0, 1, n)
+        a = np.array([segs[i][0] for i in k]); b = np.array([segs[i][1] for i in k]); w = np.array([segs[i][2] for i in k])
+        return a + (b - a) * u[:, None] + rng.normal(size=(n, 3)) * w[:, None] * 0.5
+    def _axon(self, rng, n, r, z0=0.72, z1=-1.25):
+        z = rng.uniform(z1, z0, n); th = rng.uniform(0, 2 * np.pi, n)
+        rad = r * (1 + 0.9 * (self._myelin(z)))
+        return np.stack([rad * np.cos(th), rad * np.sin(th), z], 1)
+    def _myelin(self, z):
+        return ((z < 0.55) & (z > -1.15) & (np.mod(z, 0.24) > 0.04)).astype(float)
+    def build(self, rng):
+        soma = self.SOMA + _surface_from_implicit(lambda p: (p ** 2).sum(1) - 0.23 ** 2, 1200, rng, rmax=0.5)
+        s = np.concatenate([soma, self._axon(rng, 1500, 0.05), self._branches(rng, NS - 2700)])
+        q = rng.normal(size=(1200, 3)); q /= np.linalg.norm(q, axis=1, keepdims=True)
+        sv = self.SOMA + q * 0.22 * rng.uniform(0, 1, (1200, 1)) ** (1 / 3)
+        ax = self._axon(rng, N - NS - 1200, 0.045); ax[:, :2] *= rng.uniform(0, 1, (len(ax), 1))
+        return s * 0.8, np.concatenate([sv, ax]) * 0.8
+    def pulse(self, t): return 1.0 + 0.02 * math.exp(-((t * 1.3) % 1.0) * 8)
+    def slice_colors(self, P):
+        P = P / 0.8
+        c = np.tile(np.array([255, 200, 90.]) * 1.5, (len(P), 1))
+        d = np.sqrt(((P - self.SOMA) ** 2).sum(1))
+        c[d < 0.09] = np.array([255, 90, 170.]) * 1.8                       # nucleus
+        rr = np.sqrt(P[:, 0] ** 2 + P[:, 1] ** 2); ax = (P[:, 2] < 0.72) & (d > 0.24)
+        c[ax] = np.array([0, 220, 255.]) * 1.7
+        my = ax & (self._myelin(P[:, 2]) > 0) & (rr > 0.03); c[my] = np.array([245, 245, 255.]) * 1.9
+        return c
+
+REGISTRY = {"heart": Heart, "eye": Eye, "lungs": Lungs, "rbc": RBC, "skin": Skin, "bone": Bone, "brain": Brain, "bacteria": Bacteria, "dna": DNA, "neuron": Neuron}
 _cache = {}
 def get(name, seed=7):
     if name not in _cache: _cache[name] = REGISTRY[name](np.random.default_rng(seed + hash(name) % 97))
